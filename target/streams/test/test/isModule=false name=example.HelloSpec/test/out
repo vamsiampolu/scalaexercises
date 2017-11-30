@@ -33,3 +33,5 @@
 [0m[[0minfo[0m] [0m[32m- should be unboxed out of Some(Int) using fold[0m[0m
 [0m[[0minfo[0m] [0m[32mOption[String][0m[0m
 [0m[[0minfo[0m] [0m[32m- should return default value on fold if None[0m[0m
+[0m[[0minfo[0m] [0m[32mobject[0m[0m
+[0m[[0minfo[0m] [0m[32m- should create singleton[0m[0m

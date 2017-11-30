@@ -131,4 +131,12 @@ class HelloSpec extends FlatSpec with Matchers {
     val result = input.fold(1)(_ * 5)
     result should be(1)
   }
+
+  "object" should "create singleton" in {
+    val a = OptionExample
+    val b = OptionExample
+    val c = b
+    c eq a should be(true)
+    OptionExample eq c should be(true)
+  }
 }
