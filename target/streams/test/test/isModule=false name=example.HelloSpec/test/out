@@ -1,3 +1,15 @@
 [0m[[0minfo[0m] [0m[32mHelloSpec:[0m[0m
 [0m[[0minfo[0m] [0m[32mThe Hello object[0m[0m
 [0m[[0minfo[0m] [0m[32m- should say hello[0m[0m
+[0m[[0minfo[0m] [0m[32mThe primitive true[0m[0m
+[0m[[0minfo[0m] [0m[32m- should be true[0m[0m
+[0m[[0minfo[0m] [0m[32mThe number 4[0m[0m
+[0m[[0minfo[0m] [0m[32m- should equal 4[0m[0m
+[0m[[0minfo[0m] [0m[32mThe number 2[0m[0m
+[0m[[0minfo[0m] [0m[32m- should equal 1 + 1[0m[0m
+[0m[[0minfo[0m] [0m[32mclass[0m[0m
+[0m[[0minfo[0m] [0m[32m- should provide access to property once instantiated[0m[0m
+[0m[[0minfo[0m] [0m[32mPointService.create[0m[0m
+[0m[[0minfo[0m] [0m[32m- should return Point[0m[0m
+[0m[[0minfo[0m] [0m[32m- should have Some('value')[0m[0m
+[0m[[0minfo[0m] [0m[32m- should be None if no value is supplied[0m[0m
