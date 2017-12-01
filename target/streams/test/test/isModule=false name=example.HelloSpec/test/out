@@ -35,3 +35,29 @@
 [0m[[0minfo[0m] [0m[32m- should return default value on fold if None[0m[0m
 [0m[[0minfo[0m] [0m[32mobject[0m[0m
 [0m[[0minfo[0m] [0m[32m- should create singleton[0m[0m
+[0m[[0minfo[0m] [0m[32mCompanion Object[0m[0m
+[0m[[0minfo[0m] [0m[32m- should contain factory methods[0m[0m
+[0m[[0minfo[0m] [0m[32mCompanion Object[0m[0m
+[0m[[0minfo[0m] [0m[32m- should be able to access private members[0m[0m
+[0m[[0minfo[0m] [0m[32mTuple members[0m[0m
+[0m[[0minfo[0m] [0m[32m- should be accesed using _1 and so on[0m[0m
+[0m[[0minfo[0m] [0m[32mTuple members[0m[0m
+[0m[[0minfo[0m] [0m[32m- should be accessed using destructuring[0m[0m
+[0m[[0minfo[0m] [0m[32mTuple of size 2[0m[0m
+[0m[[0minfo[0m] [0m[32m- should allow members to be swapped[0m[0m
+[0m[[0minfo[0m] [0m[32mLambda[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work[0m[0m
+[0m[[0minfo[0m] [0m[32mLambda[0m[0m
+[0m[[0minfo[0m] [0m[32m- should use closures[0m[0m
+[0m[[0minfo[0m] [0m[32mLambda[0m[0m
+[0m[[0minfo[0m] [0m[32m- should accept functions[0m[0m
+[0m[[0minfo[0m] [0m[32mLambda[0m[0m
+[0m[[0minfo[0m] [0m[32m- should return functions[0m[0m
+[0m[[0minfo[0m] [0m[32mLambda[0m[0m
+[0m[[0minfo[0m] [0m[32m- should return functions2[0m[0m
+[0m[[0minfo[0m] [0m[32mLambda[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work with isInstanceOf[0m[0m
+[0m[[0minfo[0m] [0m[32mLambda[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work with shouldBe a[0m[0m
+[0m[[0minfo[0m] [0m[32mLambda[0m[0m
+[0m[[0minfo[0m] [0m[32m- should be passed to map[0m[0m
