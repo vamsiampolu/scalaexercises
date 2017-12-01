@@ -67,3 +67,23 @@
 [0m[[0minfo[0m] [0m[32m- should not be comparable using equal[0m[0m
 [0m[[0minfo[0m] [0m[32mList[0m[0m
 [0m[[0minfo[0m] [0m[32m- should use head, headOption and tail[0m[0m
+[0m[[0minfo[0m] [0m[32mList[0m[0m
+[0m[[0minfo[0m] [0m[32m- should allow access to elements using indices[0m[0m
+[0m[[0minfo[0m] [0m[32mList[0m[0m
+[0m[[0minfo[0m] [0m[32m- should have utility methods[0m[0m
+[0m[[0minfo[0m] [0m[32mList[0m[0m
+[0m[[0minfo[0m] [0m[32m- should allow filter method[0m[0m
+[0m[[0minfo[0m] [0m[32mList[0m[0m
+[0m[[0minfo[0m] [0m[32m- should have foldLeft and reduceLeft for aggregation[0m[0m
+[0m[[0minfo[0m] [0m[32mList[0m[0m
+[0m[[0minfo[0m] [0m[32m- should be created from a Range by invoking toList[0m[0m
+[0m[[0minfo[0m] [0m[32mList[0m[0m
+[0m[[0minfo[0m] [0m[32m- should allow prepending with the :: operator[0m[0m
+[0m[[0minfo[0m] [0m[32mList[0m[0m
+[0m[[0minfo[0m] [0m[32m- should allow prepending to Nil[0m[0m
+[0m[[0minfo[0m] [0m[32mList[0m[0m
+[0m[[0minfo[0m] [0m[32m- should allow concat with ::: operator[0m[0m
+[0m[[0minfo[0m] [0m[32mList[0m[0m
+[0m[[0minfo[0m] [0m[32m- should allow Nil to be concated to List[0m[0m
+[0m[[0minfo[0m] [0m[32mList[0m[0m
+[0m[[0minfo[0m] [0m[32m- should reuse their tails[0m[0m

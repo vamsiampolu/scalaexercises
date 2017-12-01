@@ -320,5 +320,98 @@ class HelloSpec extends FlatSpec with Matchers {
     val t2 = t.tail
     t2 should be(List("c"))
   }
+
+  "List" should "allow access to elements using indices" in {
+    val list = List("a", "b", "c", "d", "e")
+    list(0) should be("a")
+    list(2) should be("c")
+    list(4) should be("e")
+
+    intercept[IndexOutOfBoundsException] {
+      println(list(5))
+    }
+ }
+
+  "List" should "have utility methods" in {
+    val a = List(1,2,3,4,5)
+    val result = a.reverse
+    val expected = List(5,4,3,2,1)
+    result should be(expected)
+    result.length should be(5)
+  }
+
+  "List" should "allow filter method" in {
+    val a = List(1,3,5,7,9)
+    val result = a filter { (num:Int) => num % 3 == 0 }
+
+    result should be(List(3,9))
+  }
+
+  "List" should "have foldLeft and reduceLeft for aggregation" in {
+    val a = List(1,3,5,7)
+    val result = a.reduceLeft(_ + _)
+    val expected = 16
+    result should be(expected)
+
+    val resultFold = a.foldLeft(0)(_ + _)
+    resultFold should be(expected)
+  }
+
+  "List" should "be created from a Range by invoking toList" in {
+    val a = 1 to 5
+    val result = a.toList
+    val expected = List(1,2,3,4,5)
+    result should be(expected)
+
+    val b = 1 until 5
+    val result2 = b.toList
+    val expected2 = List(1,2,3,4)
+    result2 should be(expected2)
+  }
+
+  "List" should "allow prepending with the :: operator" in {
+    val a = List(3)
+    val b = 2 :: a
+    val c = 1 :: b
+
+    c should be(List(1,2,3))
+  }
+
+  "List" should "allow prepending to Nil" in {
+    // Nil is treated as empty list
+    val a = Nil
+    val result = 1 :: a
+    result should be(List(1))
+  }
+
+  "List" should "allow concat with ::: operator" in {
+    val a = List(1)
+    val b = List(2,3)
+
+    val result = a ::: b
+    val expected = List(1,2,3)
+
+    result should be(expected)
+  }
+
+  "List" should "allow Nil to be concated to List" in {
+    val a = List(1,2)
+    val b = Nil
+
+    val result = a ::: b
+    val expected = List(1,2)
+
+    result should be(expected)
+  }
+
+  "List" should "reuse their tails" in {
+    val a = List(3)
+    val b = 2 :: a
+    val c = 1 :: b
+
+    c.tail should be(b)
+    b.tail should be(a)
+    a.tail should be(Nil)
+  }
 }
 
