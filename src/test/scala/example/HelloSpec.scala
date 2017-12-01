@@ -163,7 +163,7 @@ class HelloSpec extends FlatSpec with Matchers {
     Movie.academyAwardBestMovieForYear(1932).get.name should be("Grand Hotel")
   }
 
-  // This does not work on the REPL ?? 
+  // This does not work on the REPL ??
   "Companion Object" should "be able to access private members" in {
     val clark = new Person("Clark Kent", "Superman")
     val result = Person.secretRevealed(clark)
@@ -412,6 +412,244 @@ class HelloSpec extends FlatSpec with Matchers {
     c.tail should be(b)
     b.tail should be(a)
     a.tail should be(Nil)
+  }
+
+  "Map" should "work with shorthand notation" in {
+    val result = Map(
+      ("a", 1),
+      ("b", 2),
+      ("c", 3)
+    )
+
+    val expected = Map(
+      "a" -> 1,
+      "b" -> 2,
+      "c" -> 3
+    )
+
+    result should be(expected)
+  }
+
+  "Map" should "provide value when apply method is invoked with a key" in {
+    val expected = "New York"
+    val input = Map(
+      "FL" -> "Florida",
+      "CA" -> "California",
+      "MI" -> "Michigan",
+      "TX" -> "Texas",
+      "NY" -> expected
+    )
+
+    // apply is an unsafe operation
+   val result = input apply { "NY" }
+   result should be(expected)
+
+   // it will throw an exception if you lookup non-existant key
+   intercept[NoSuchElementException] {
+    input apply { "WI" }
+   }
+  }
+
+  "Map" should "values can be accessed directly" in {
+    val expected = "New York"
+    val input = Map(
+      "FL" -> "Florida",
+      "CA" -> "California",
+      "MI" -> "Michigan",
+      "TX" -> "Texas",
+      "NY" -> expected
+    )
+
+    // direct access is an unsafe operation
+    val result = input("NY")
+    result should be(expected)
+
+    // it will throw an exception if you lookup non-existant key
+    intercept[NoSuchElementException] {
+      input("WI")
+    }
+  }
+
+  "Map" should "safely retrieve value with get method" in {
+    val expected = "New York"
+    val input = Map(
+      "FL" -> "Florida",
+      "CA" -> "California",
+      "MI" -> "Michigan",
+      "TX" -> "Texas",
+      "NY" -> expected
+    )
+
+    val result = input get("NY")
+    result should be(Some(expected))
+
+    val noneValue = input get("WI")
+    noneValue should be(None)
+  }
+
+  "Map" should "safely retrieve with getOrElse" in {
+    val expected = "New York"
+    val expected2 = "missing value"
+
+    val input = Map(
+      "FL" -> "Florida",
+      "CA" -> "California",
+      "MI" -> "Michigan",
+      "TX" -> "Texas",
+      "NY" -> expected
+    )
+
+    val result = input getOrElse("NY", expected2)
+    result should be(expected)
+
+    val noneValue = input getOrElse("WI", expected2)
+    noneValue should be(expected2)
+  }
+
+  "Map" should "be allowed to have one fallback for any missing keys" in {
+    val expected = "Puerto Rico"
+    val input = Map(
+      "FL" -> "Florida",
+      "CA" -> "California",
+      "MI" -> "Michigan",
+      "TX" -> "Texas",
+      "NY" -> "New York"
+    ) withDefaultValue expected
+
+    // this makes direct access and apply safe operations
+    input("WI") should be(expected)
+    input apply { "WI" } should be(expected)
+    // however, it does not affect safe operations such as get
+    input get("WI") should be(None)
+  }
+
+  "Map" should "provide its size property" in {
+    val input = Map(
+      "FL" -> "Florida",
+      "CA" -> "California",
+      "MI" -> "Michigan",
+      "TX" -> "Texas",
+      "NY" -> "New York",
+      "MI" -> "Michigan"
+    )
+
+    val expected = 5
+    input.size should be(expected)
+  }
+
+  "Map" should "update a property with duplicate key" in {
+    val input = Map(
+      "FL" -> "Florida",
+      "CA" -> "California",
+      "MI" -> "Michigan",
+      "TX" -> "Texas",
+      "NY" -> "New York",
+      "MI" -> "Michigan",
+      "MI" -> "Meecheegun"
+    )
+
+    val expected = 5
+    input.size should be(expected)
+    input("MI") should be("Meecheegun")
+  }
+
+  "Map" should "report if it contains a key" in {
+    val input = Map(
+      "FL" -> "Florida",
+      "CA" -> "California",
+      "MI" -> "Michigan",
+      "TX" -> "Texas",
+      "NY" -> "New York",
+      "MI" -> "Michigan"
+    )
+
+    input contains("MI") should be(true)
+    input contains("NJ") should be(false)
+  }
+
+  "Map" should "allow keys to be added with + operation" in {
+    val input = Map(
+      "FL" -> "Florida",
+      "CA" -> "California",
+    )
+
+    val expected = "New York"
+    val next = input + ("NY" -> expected)
+    next("NY") should be(expected)
+  }
+
+  "Map" should "allow keys to be removed with - operation" in {
+    val input = Map(
+      "FL" -> "Florida",
+      "CA" -> "California",
+      "MI" -> "Michigan",
+      "TX" -> "Texas",
+      "NY" -> "New York",
+      "MI" -> "Michigan"
+    )
+
+    val expected = Map(
+      "FL" -> "Florida",
+      "MI" -> "Michigan",
+      "TX" -> "Texas",
+      "NY" -> "New York",
+      "MI" -> "Michigan"
+    )
+
+    val result = input - "CA"
+    result should be(expected)
+  }
+
+  "Map" should "allow removing multiple keys with - and tuple" in {
+    val input = Map(
+      "FL" -> "Florida",
+      "CA" -> "California",
+      "MI" -> "Michigan",
+      "TX" -> "Texas",
+      "NY" -> "New York",
+      "MI" -> "Michigan"
+    )
+
+    val expected = Map(
+      "FL" -> "Florida",
+      "MI" -> "Michigan",
+      "TX" -> "Texas",
+      "MI" -> "Michigan",
+    )
+
+    val result = input - ("CA", "NY")
+    result should be(expected)
+  }
+
+  "Map" should "allow multiple keys to be removed with -- operation" in {
+    val input = Map(
+      "FL" -> "Florida",
+      "CA" -> "California",
+      "MI" -> "Michigan",
+      "TX" -> "Texas",
+      "NY" -> "New York",
+      "MI" -> "Michigan"
+    )
+
+    val expected = Map(
+      "FL" -> "Florida",
+      "MI" -> "Michigan",
+      "TX" -> "Texas",
+      "MI" -> "Michigan"
+    )
+
+    val result = input -- List("CA", "NY")
+    result should be(expected)
+  }
+
+  "Map" should "infer key types to Any if not specified" in {
+    val input = Map(
+      "FL" -> "Florida",
+      23 -> "Florida"
+    )
+
+    input contains { "FL" } should be(true)
+    input contains { 23 } should be(true)
   }
 }
 

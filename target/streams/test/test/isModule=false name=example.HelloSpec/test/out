@@ -87,3 +87,31 @@
 [0m[[0minfo[0m] [0m[32m- should allow Nil to be concated to List[0m[0m
 [0m[[0minfo[0m] [0m[32mList[0m[0m
 [0m[[0minfo[0m] [0m[32m- should reuse their tails[0m[0m
+[0m[[0minfo[0m] [0m[32mMap[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work with shorthand notation[0m[0m
+[0m[[0minfo[0m] [0m[32mMap[0m[0m
+[0m[[0minfo[0m] [0m[32m- should provide value when apply method is invoked with a key[0m[0m
+[0m[[0minfo[0m] [0m[32mMap[0m[0m
+[0m[[0minfo[0m] [0m[32m- should values can be accessed directly[0m[0m
+[0m[[0minfo[0m] [0m[32mMap[0m[0m
+[0m[[0minfo[0m] [0m[32m- should safely retrieve value with get method[0m[0m
+[0m[[0minfo[0m] [0m[32mMap[0m[0m
+[0m[[0minfo[0m] [0m[32m- should safely retrieve with getOrElse[0m[0m
+[0m[[0minfo[0m] [0m[32mMap[0m[0m
+[0m[[0minfo[0m] [0m[32m- should be allowed to have one fallback for any missing keys[0m[0m
+[0m[[0minfo[0m] [0m[32mMap[0m[0m
+[0m[[0minfo[0m] [0m[32m- should provide its size property[0m[0m
+[0m[[0minfo[0m] [0m[32mMap[0m[0m
+[0m[[0minfo[0m] [0m[32m- should update a property with duplicate key[0m[0m
+[0m[[0minfo[0m] [0m[32mMap[0m[0m
+[0m[[0minfo[0m] [0m[32m- should report if it contains a key[0m[0m
+[0m[[0minfo[0m] [0m[32mMap[0m[0m
+[0m[[0minfo[0m] [0m[32m- should allow keys to be added with + operation[0m[0m
+[0m[[0minfo[0m] [0m[32mMap[0m[0m
+[0m[[0minfo[0m] [0m[32m- should allow keys to be removed with - operation[0m[0m
+[0m[[0minfo[0m] [0m[32mMap[0m[0m
+[0m[[0minfo[0m] [0m[32m- should allow removing multiple keys with - and tuple[0m[0m
+[0m[[0minfo[0m] [0m[32mMap[0m[0m
+[0m[[0minfo[0m] [0m[32m- should allow multiple keys to be removed with -- operation[0m[0m
+[0m[[0minfo[0m] [0m[32mMap[0m[0m
+[0m[[0minfo[0m] [0m[32m- should infer key types to Any if not specified[0m[0m
