@@ -651,5 +651,62 @@ class HelloSpec extends FlatSpec with Matchers {
     input contains { "FL" } should be(true)
     input contains { 23 } should be(true)
   }
+
+  "Map" should "allow for concatenation with ++ operator" in {
+    val a = Map("a" -> "A") 
+    val b = Map("b" -> "B")
+    val expected = Map("a" -> "A", "b" -> "B")
+
+    val result = a ++ b
+    result should be(expected)
+  }
+
+  "Map" should "retrieve values as a List when values is invoked" in {
+    val input = Map(
+      "FL" -> "Florida",
+      "CA" -> "California",
+      "MI" -> "Michigan",
+      "TX" -> "Texas",
+      "NY" -> "New York"
+    )
+
+
+    // ordering of values is not guaranteed
+    input.values should contain("Florida")
+    input.values should contain("Michigan")
+    input.values should contain("New York")
+  }
+
+  "Map" should "retrieve keys as a List when keys is invoked" in {
+    val input = Map(
+      "FL" -> "Florida",
+      "CA" -> "California",
+      "MI" -> "Michigan",
+      "TX" -> "Texas",
+      "NY" -> "New York"
+    )
+
+    val result = input.keys
+
+    // ordering of keys is not guaranteed
+    result should contain("FL")
+    result should contain("MI")
+    result should contain("NY")
+  }
+
+  "Map" should "retrieve keys as a KeySet" in {
+    val input = Map(
+      "FL" -> "Florida",
+      "CA" -> "California",
+      "MI" -> "Michigan",
+      "TX" -> "Texas",
+      "NY" -> "New York"
+    )
+    val expected = Set("FL", "CA", "MI", "TX", "NY")
+
+    val result = input.keySet
+
+    result should be(expected)
+  }
 }
 

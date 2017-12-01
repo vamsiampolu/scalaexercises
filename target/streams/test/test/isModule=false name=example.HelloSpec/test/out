@@ -115,3 +115,11 @@
 [0m[[0minfo[0m] [0m[32m- should allow multiple keys to be removed with -- operation[0m[0m
 [0m[[0minfo[0m] [0m[32mMap[0m[0m
 [0m[[0minfo[0m] [0m[32m- should infer key types to Any if not specified[0m[0m
+[0m[[0minfo[0m] [0m[32mMap[0m[0m
+[0m[[0minfo[0m] [0m[32m- should allow for concatenation with ++ operator[0m[0m
+[0m[[0minfo[0m] [0m[32mMap[0m[0m
+[0m[[0minfo[0m] [0m[32m- should retrieve values as a List when values is invoked[0m[0m
+[0m[[0minfo[0m] [0m[32mMap[0m[0m
+[0m[[0minfo[0m] [0m[32m- should retrieve keys as a List when keys is invoked[0m[0m
+[0m[[0minfo[0m] [0m[32mMap[0m[0m
+[0m[[0minfo[0m] [0m[32m- should retrieve keys as a KeySet[0m[0m
