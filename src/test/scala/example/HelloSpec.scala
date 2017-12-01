@@ -286,5 +286,39 @@ class HelloSpec extends FlatSpec with Matchers {
       List(5,6,7)
 )
   }
+
+  // equal does reference checking
+  "List" should "be comparable using ==" in {
+    val a = List("abc","xyz")
+    val b = List("abc", "xyz")
+    a == b should be(true)
+  }
+
+  "List" should "not be comparable using equal" in {
+    val a = List("abc","xyz")
+    val b = List("abc", "xyz")
+    a eq b should be(false)
+  }
+
+  "List" should "use head, headOption and tail" in {
+    val a = List("a", "b", "c")
+    val h = a.head
+    val sh = a.headOption
+    h should be("a")
+    sh should be (Some("a"))
+
+    // Mini revision
+    // Option can use map and fold
+    val ush = sh.map { (x:String) => x.toUpperCase }
+    ush should be(Some("A"))
+    val fush = ush.fold("") { (x:String) => x.toLowerCase }
+    fush should be("a")
+
+    val t = a.tail
+    t should be(List("b", "c"))
+
+    val t2 = t.tail
+    t2 should be(List("c"))
+  }
 }
 
