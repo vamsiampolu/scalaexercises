@@ -708,5 +708,16 @@ class HelloSpec extends FlatSpec with Matchers {
 
     result should be(expected)
   }
+
+  "Map" should "not consider order when determing equivalency" in {
+    val myMap1 =
+      Map("MI" → "Michigan", "OH" → "Ohio", "WI" → "Wisconsin", "IA" → "Iowa")
+    val myMap2 =
+      Map("WI" → "Wisconsin", "MI" → "Michigan", "IA" → "Iowa", "OH" → "Ohio")
+
+    myMap1.equals(myMap2) should be(
+      true
+)
+  }
 }
 

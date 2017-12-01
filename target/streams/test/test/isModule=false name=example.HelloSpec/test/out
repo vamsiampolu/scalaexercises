@@ -123,3 +123,5 @@
 [0m[[0minfo[0m] [0m[32m- should retrieve keys as a List when keys is invoked[0m[0m
 [0m[[0minfo[0m] [0m[32mMap[0m[0m
 [0m[[0minfo[0m] [0m[32m- should retrieve keys as a KeySet[0m[0m
+[0m[[0minfo[0m] [0m[32mMap[0m[0m
+[0m[[0minfo[0m] [0m[32m- should not consider order when determing equivalency[0m[0m
