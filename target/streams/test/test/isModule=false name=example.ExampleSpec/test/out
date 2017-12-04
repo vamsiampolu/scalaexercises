@@ -1,0 +1,4 @@
+[0m[[0minfo[0m] [0m[32mExampleSpec:[0m[0m
+[0m[[0minfo[0m] [0m[32mFeature: The user can pop an element of the stack[0m[0m
+[0m[[0minfo[0m] [0m[33m  Scenario: pop is invoked by user on non-empty stack (pending)[0m[0m
+[0m[[0minfo[0m] [0m[33m  Scenario: pop is invoked by user on empty stack (pending)[0m[0m
