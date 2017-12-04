@@ -1,50 +1,40 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<testsuite hostname="localAdmins-MacBook-Pro-4.local" name="example.HelloSpec" tests="21" errors="0" failures="0" skipped="0" time="0.049">
+<testsuite hostname="localAdmins-MacBook-Pro-4.local" name="example.SetSpec" tests="16" errors="0" failures="0" skipped="0" time="0.005">
                      <properties>
       <property name="jline.esc.timeout" value="0"/><property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/><property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home/jre/lib"/><property name="java.vm.version" value="25.152-b16"/><property name="gopherProxySet" value="false"/><property name="java.vm.vendor" value="Oracle Corporation"/><property name="java.vendor.url" value="http://java.oracle.com/"/><property name="path.separator" value=":"/><property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/><property name="file.encoding.pkg" value="sun.io"/><property name="user.country" value="AU"/><property name="sun.java.launcher" value="SUN_STANDARD"/><property name="sun.os.patch.level" value="unknown"/><property name="java.vm.specification.name" value="Java Virtual Machine Specification"/><property name="user.dir" value="/Users/localuser/Do/scalaexercises"/><property name="java.runtime.version" value="1.8.0_152-b16"/><property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/><property name="java.endorsed.dirs" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home/jre/lib/endorsed"/><property name="os.arch" value="x86_64"/><property name="java.io.tmpdir" value="/var/folders/ty/xytl_jgn54zf1y8wf5bx5fq80000gp/T/"/><property name="line.separator" value="
 "/><property name="java.vm.specification.vendor" value="Oracle Corporation"/><property name="os.name" value="Mac OS X"/><property name="sun.jnu.encoding" value="UTF-8"/><property name="java.library.path" value="/Users/localuser/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/><property name="java.specification.name" value="Java Platform API Specification"/><property name="java.class.version" value="52.0"/><property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/><property name="os.version" value="10.13.1"/><property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/><property name="user.home" value="/Users/localuser"/><property name="user.timezone" value="Australia/Sydney"/><property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob"/><property name="file.encoding" value="UTF-8"/><property name="java.specification.version" value="1.8"/><property name="java.class.path" value="/usr/local/Cellar/sbt/1.0.4/libexec/bin/sbt-launch.jar"/><property name="user.name" value="localuser"/><property name="jline.shutdownhook" value="false"/><property name="java.vm.specification.version" value="1.8"/><property name="sun.java.command" value="/usr/local/Cellar/sbt/1.0.4/libexec/bin/sbt-launch.jar ~test"/><property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home/jre"/><property name="sun.arch.data.model" value="64"/><property name="user.language" value="en"/><property name="java.specification.vendor" value="Oracle Corporation"/><property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/><property name="java.vm.info" value="mixed mode"/><property name="java.version" value="1.8.0_152"/><property name="java.ext.dirs" value="/Users/localuser/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java"/><property name="sun.boot.class.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home/jre/classes"/><property name="java.vendor" value="Oracle Corporation"/><property name="file.separator" value="/"/><property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/><property name="sun.io.unicode.encoding" value="UnicodeBig"/><property name="sun.cpu.endian" value="little"/><property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/><property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/><property name="sun.cpu.isalist" value=""/>
     </properties>
-                     <testcase classname="example.HelloSpec" name="The Hello object should say hello" time="0.018">
+                     <testcase classname="example.SetSpec" name="A Set should contain distinct values" time="0.001">
                                                  
-                                               </testcase><testcase classname="example.HelloSpec" name="The primitive true should be true" time="0.0">
+                                               </testcase><testcase classname="example.SetSpec" name="A Set should tell us its size" time="0.0">
                                                  
-                                               </testcase><testcase classname="example.HelloSpec" name="The number 4 should equal 4" time="0.0">
+                                               </testcase><testcase classname="example.SetSpec" name="A Set should allow adding of elements using +" time="0.0">
                                                  
-                                               </testcase><testcase classname="example.HelloSpec" name="The number 2 should equal 1 + 1" time="0.002">
+                                               </testcase><testcase classname="example.SetSpec" name="A Set should allow for use a contains function" time="0.0">
                                                  
-                                               </testcase><testcase classname="example.HelloSpec" name="class should provide access to property once instantiated" time="0.002">
+                                               </testcase><testcase classname="example.SetSpec" name="A Set should allow for checking for member" time="0.001">
                                                  
-                                               </testcase><testcase classname="example.HelloSpec" name="create should return Point" time="0.001">
+                                               </testcase><testcase classname="example.SetSpec" name="A Set should allow removing one element with -" time="0.0">
                                                  
-                                               </testcase><testcase classname="example.HelloSpec" name="create should be an instance of Point" time="0.001">
+                                               </testcase><testcase classname="example.SetSpec" name="A Set should allow removing multiple elements with -" time="0.0">
                                                  
-                                               </testcase><testcase classname="example.HelloSpec" name="Option should have Some('value')" time="0.0">
+                                               </testcase><testcase classname="example.SetSpec" name="A Set should allow removing multiple elements using --" time="0.0">
                                                  
-                                               </testcase><testcase classname="example.HelloSpec" name="Option should be None if no value is supplied" time="0.0">
+                                               </testcase><testcase classname="example.SetSpec" name="A Set should not throw error when removing non-existant elements" time="0.001">
                                                  
-                                               </testcase><testcase classname="example.HelloSpec" name="getOrElse should retrieve value if it exists" time="0.002">
+                                               </testcase><testcase classname="example.SetSpec" name="A Set should support intersect operation" time="0.0">
                                                  
-                                               </testcase><testcase classname="example.HelloSpec" name="getOrElse should retrieve default value if None" time="0.0">
+                                               </testcase><testcase classname="example.SetSpec" name="A Set should support intersect operation using &amp; operator" time="0.0">
                                                  
-                                               </testcase><testcase classname="example.HelloSpec" name="isEmpty should when applied on Some('Value') be false" time="0.0">
+                                               </testcase><testcase classname="example.SetSpec" name="A Set should support union operation" time="0.0">
                                                  
-                                               </testcase><testcase classname="example.HelloSpec" name="isEmpty should when applied on None be true" time="0.0">
+                                               </testcase><testcase classname="example.SetSpec" name="A Set should support union operation using | operator" time="0.001">
                                                  
-                                               </testcase><testcase classname="example.HelloSpec" name="Option[String] should pattern matching be FoundValue" time="0.0">
+                                               </testcase><testcase classname="example.SetSpec" name="A Set should allow checking if another Set is a subsetOf current Set" time="0.0">
                                                  
-                                               </testcase><testcase classname="example.HelloSpec" name="Option[String] should pattern matching be None" time="0.004">
+                                               </testcase><testcase classname="example.SetSpec" name="A Set should allow computing difference between 2 Sets" time="0.0">
                                                  
-                                               </testcase><testcase classname="example.HelloSpec" name="Option[String] should work with map" time="0.01">
-                                                 
-                                               </testcase><testcase classname="example.HelloSpec" name="Option[String] should be unboxed out of Some(Int) using fold" time="0.005">
-                                                 
-                                               </testcase><testcase classname="example.HelloSpec" name="Option[String] should return default value on fold if None" time="0.002">
-                                                 
-                                               </testcase><testcase classname="example.HelloSpec" name="object should create singleton" time="0.0">
-                                                 
-                                               </testcase><testcase classname="example.HelloSpec" name="Companion Object should contain factory methods" time="0.001">
-                                                 
-                                               </testcase><testcase classname="example.HelloSpec" name="Companion Object should be able to access private members" time="0.001">
+                                               </testcase><testcase classname="example.SetSpec" name="A Set should allow computing difference between 2 Sets using shorthand operator &amp;~" time="0.001">
                                                  
                                                </testcase>
                      <system-out></system-out>

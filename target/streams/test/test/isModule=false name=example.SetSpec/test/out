@@ -1,0 +1,18 @@
+[0m[[0minfo[0m] [0m[32mSetSpec:[0m[0m
+[0m[[0minfo[0m] [0m[32mA Set[0m[0m
+[0m[[0minfo[0m] [0m[32m- should contain distinct values[0m[0m
+[0m[[0minfo[0m] [0m[32m- should tell us its size[0m[0m
+[0m[[0minfo[0m] [0m[32m- should allow adding of elements using +[0m[0m
+[0m[[0minfo[0m] [0m[32m- should allow for use a contains function[0m[0m
+[0m[[0minfo[0m] [0m[32m- should allow for checking for member[0m[0m
+[0m[[0minfo[0m] [0m[32m- should allow removing one element with -[0m[0m
+[0m[[0minfo[0m] [0m[32m- should allow removing multiple elements with -[0m[0m
+[0m[[0minfo[0m] [0m[32m- should allow removing multiple elements using --[0m[0m
+[0m[[0minfo[0m] [0m[32m- should not throw error when removing non-existant elements[0m[0m
+[0m[[0minfo[0m] [0m[32m- should support intersect operation[0m[0m
+[0m[[0minfo[0m] [0m[32m- should support intersect operation using & operator[0m[0m
+[0m[[0minfo[0m] [0m[32m- should support union operation[0m[0m
+[0m[[0minfo[0m] [0m[32m- should support union operation using | operator[0m[0m
+[0m[[0minfo[0m] [0m[32m- should allow checking if another Set is a subsetOf current Set[0m[0m
+[0m[[0minfo[0m] [0m[32m- should allow computing difference between 2 Sets[0m[0m
+[0m[[0minfo[0m] [0m[32m- should allow computing difference between 2 Sets using shorthand operator &~[0m[0m

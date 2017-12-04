@@ -1,0 +1,6 @@
+[0m[[0minfo[0m] [0m[32mTupleSpec:[0m[0m
+[0m[[0minfo[0m] [0m[32mA Tuple[0m[0m
+[0m[[0minfo[0m] [0m[32m- should allows members to be accesed using _1 and so on[0m[0m
+[0m[[0minfo[0m] [0m[32m- should allow members to be accessed using destructuring[0m[0m
+[0m[[0minfo[0m] [0m[32mA Tuple of size 2[0m[0m
+[0m[[0minfo[0m] [0m[32m- should allow members to be swapped[0m[0m

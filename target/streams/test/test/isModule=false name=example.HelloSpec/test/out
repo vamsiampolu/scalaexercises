@@ -1,4 +1,5 @@
 [0m[[0minfo[0m] [0m[32mHelloSpec:[0m[0m
+[0m[[0minfo[0m] [0m[32mScala Primitives[0m[0m
 [0m[[0minfo[0m] [0m[32mThe Hello object[0m[0m
 [0m[[0minfo[0m] [0m[32m- should say hello[0m[0m
 [0m[[0minfo[0m] [0m[32mThe primitive true[0m[0m
@@ -10,28 +11,24 @@
 [0m[[0minfo[0m] [0m[32mclass[0m[0m
 [0m[[0minfo[0m] [0m[32m- should provide access to property once instantiated[0m[0m
 [0m[[0minfo[0m] [0m[32mPointService.create[0m[0m
+[0m[[0minfo[0m] [0m[32mPointService.create[0m[0m
 [0m[[0minfo[0m] [0m[32m- should return Point[0m[0m
 [0m[[0minfo[0m] [0m[32mPointService.create[0m[0m
 [0m[[0minfo[0m] [0m[32m- should be an instance of Point[0m[0m
+[0m[[0minfo[0m] [0m[32mOption[0m[0m
 [0m[[0minfo[0m] [0m[32m- should have Some('value')[0m[0m
 [0m[[0minfo[0m] [0m[32m- should be None if no value is supplied[0m[0m
 [0m[[0minfo[0m] [0m[32mgetOrElse[0m[0m
 [0m[[0minfo[0m] [0m[32m- should retrieve value if it exists[0m[0m
-[0m[[0minfo[0m] [0m[32mgetOrElse[0m[0m
 [0m[[0minfo[0m] [0m[32m- should retrieve default value if None[0m[0m
-[0m[[0minfo[0m] [0m[32misEmpty method on Some('Value')[0m[0m
-[0m[[0minfo[0m] [0m[32m- should be false[0m[0m
-[0m[[0minfo[0m] [0m[32misEmpty method on None[0m[0m
-[0m[[0minfo[0m] [0m[32m- should be true[0m[0m
+[0m[[0minfo[0m] [0m[32misEmpty[0m[0m
+[0m[[0minfo[0m] [0m[32m- should when applied on Some('Value') be false[0m[0m
+[0m[[0minfo[0m] [0m[32m- should when applied on None be true[0m[0m
 [0m[[0minfo[0m] [0m[32mOption[String][0m[0m
 [0m[[0minfo[0m] [0m[32m- should pattern matching be FoundValue[0m[0m
-[0m[[0minfo[0m] [0m[32mOption[String][0m[0m
 [0m[[0minfo[0m] [0m[32m- should pattern matching be None[0m[0m
-[0m[[0minfo[0m] [0m[32mOption[String][0m[0m
 [0m[[0minfo[0m] [0m[32m- should work with map[0m[0m
-[0m[[0minfo[0m] [0m[32mOption[String][0m[0m
 [0m[[0minfo[0m] [0m[32m- should be unboxed out of Some(Int) using fold[0m[0m
-[0m[[0minfo[0m] [0m[32mOption[String][0m[0m
 [0m[[0minfo[0m] [0m[32m- should return default value on fold if None[0m[0m
 [0m[[0minfo[0m] [0m[32mobject[0m[0m
 [0m[[0minfo[0m] [0m[32m- should create singleton[0m[0m
@@ -39,89 +36,3 @@
 [0m[[0minfo[0m] [0m[32m- should contain factory methods[0m[0m
 [0m[[0minfo[0m] [0m[32mCompanion Object[0m[0m
 [0m[[0minfo[0m] [0m[32m- should be able to access private members[0m[0m
-[0m[[0minfo[0m] [0m[32mTuple members[0m[0m
-[0m[[0minfo[0m] [0m[32m- should be accesed using _1 and so on[0m[0m
-[0m[[0minfo[0m] [0m[32mTuple members[0m[0m
-[0m[[0minfo[0m] [0m[32m- should be accessed using destructuring[0m[0m
-[0m[[0minfo[0m] [0m[32mTuple of size 2[0m[0m
-[0m[[0minfo[0m] [0m[32m- should allow members to be swapped[0m[0m
-[0m[[0minfo[0m] [0m[32mLambda[0m[0m
-[0m[[0minfo[0m] [0m[32m- should work[0m[0m
-[0m[[0minfo[0m] [0m[32mLambda[0m[0m
-[0m[[0minfo[0m] [0m[32m- should use closures[0m[0m
-[0m[[0minfo[0m] [0m[32mLambda[0m[0m
-[0m[[0minfo[0m] [0m[32m- should accept functions[0m[0m
-[0m[[0minfo[0m] [0m[32mLambda[0m[0m
-[0m[[0minfo[0m] [0m[32m- should return functions[0m[0m
-[0m[[0minfo[0m] [0m[32mLambda[0m[0m
-[0m[[0minfo[0m] [0m[32m- should return functions2[0m[0m
-[0m[[0minfo[0m] [0m[32mLambda[0m[0m
-[0m[[0minfo[0m] [0m[32m- should work with isInstanceOf[0m[0m
-[0m[[0minfo[0m] [0m[32mLambda[0m[0m
-[0m[[0minfo[0m] [0m[32m- should work with shouldBe a[0m[0m
-[0m[[0minfo[0m] [0m[32mLambda[0m[0m
-[0m[[0minfo[0m] [0m[32m- should be passed to map[0m[0m
-[0m[[0minfo[0m] [0m[32mList[0m[0m
-[0m[[0minfo[0m] [0m[32m- should be comparable using ==[0m[0m
-[0m[[0minfo[0m] [0m[32mList[0m[0m
-[0m[[0minfo[0m] [0m[32m- should not be comparable using equal[0m[0m
-[0m[[0minfo[0m] [0m[32mList[0m[0m
-[0m[[0minfo[0m] [0m[32m- should use head, headOption and tail[0m[0m
-[0m[[0minfo[0m] [0m[32mList[0m[0m
-[0m[[0minfo[0m] [0m[32m- should allow access to elements using indices[0m[0m
-[0m[[0minfo[0m] [0m[32mList[0m[0m
-[0m[[0minfo[0m] [0m[32m- should have utility methods[0m[0m
-[0m[[0minfo[0m] [0m[32mList[0m[0m
-[0m[[0minfo[0m] [0m[32m- should allow filter method[0m[0m
-[0m[[0minfo[0m] [0m[32mList[0m[0m
-[0m[[0minfo[0m] [0m[32m- should have foldLeft and reduceLeft for aggregation[0m[0m
-[0m[[0minfo[0m] [0m[32mList[0m[0m
-[0m[[0minfo[0m] [0m[32m- should be created from a Range by invoking toList[0m[0m
-[0m[[0minfo[0m] [0m[32mList[0m[0m
-[0m[[0minfo[0m] [0m[32m- should allow prepending with the :: operator[0m[0m
-[0m[[0minfo[0m] [0m[32mList[0m[0m
-[0m[[0minfo[0m] [0m[32m- should allow prepending to Nil[0m[0m
-[0m[[0minfo[0m] [0m[32mList[0m[0m
-[0m[[0minfo[0m] [0m[32m- should allow concat with ::: operator[0m[0m
-[0m[[0minfo[0m] [0m[32mList[0m[0m
-[0m[[0minfo[0m] [0m[32m- should allow Nil to be concated to List[0m[0m
-[0m[[0minfo[0m] [0m[32mList[0m[0m
-[0m[[0minfo[0m] [0m[32m- should reuse their tails[0m[0m
-[0m[[0minfo[0m] [0m[32mMap[0m[0m
-[0m[[0minfo[0m] [0m[32m- should work with shorthand notation[0m[0m
-[0m[[0minfo[0m] [0m[32mMap[0m[0m
-[0m[[0minfo[0m] [0m[32m- should provide value when apply method is invoked with a key[0m[0m
-[0m[[0minfo[0m] [0m[32mMap[0m[0m
-[0m[[0minfo[0m] [0m[32m- should values can be accessed directly[0m[0m
-[0m[[0minfo[0m] [0m[32mMap[0m[0m
-[0m[[0minfo[0m] [0m[32m- should safely retrieve value with get method[0m[0m
-[0m[[0minfo[0m] [0m[32mMap[0m[0m
-[0m[[0minfo[0m] [0m[32m- should safely retrieve with getOrElse[0m[0m
-[0m[[0minfo[0m] [0m[32mMap[0m[0m
-[0m[[0minfo[0m] [0m[32m- should be allowed to have one fallback for any missing keys[0m[0m
-[0m[[0minfo[0m] [0m[32mMap[0m[0m
-[0m[[0minfo[0m] [0m[32m- should provide its size property[0m[0m
-[0m[[0minfo[0m] [0m[32mMap[0m[0m
-[0m[[0minfo[0m] [0m[32m- should update a property with duplicate key[0m[0m
-[0m[[0minfo[0m] [0m[32mMap[0m[0m
-[0m[[0minfo[0m] [0m[32m- should report if it contains a key[0m[0m
-[0m[[0minfo[0m] [0m[32mMap[0m[0m
-[0m[[0minfo[0m] [0m[32m- should allow keys to be added with + operation[0m[0m
-[0m[[0minfo[0m] [0m[32mMap[0m[0m
-[0m[[0minfo[0m] [0m[32m- should allow keys to be removed with - operation[0m[0m
-[0m[[0minfo[0m] [0m[32mMap[0m[0m
-[0m[[0minfo[0m] [0m[32m- should allow removing multiple keys with - and tuple[0m[0m
-[0m[[0minfo[0m] [0m[32mMap[0m[0m
-[0m[[0minfo[0m] [0m[32m- should allow multiple keys to be removed with -- operation[0m[0m
-[0m[[0minfo[0m] [0m[32mMap[0m[0m
-[0m[[0minfo[0m] [0m[32m- should infer key types to Any if not specified[0m[0m
-[0m[[0minfo[0m] [0m[32mMap[0m[0m
-[0m[[0minfo[0m] [0m[32m- should allow for concatenation with ++ operator[0m[0m
-[0m[[0minfo[0m] [0m[32mMap[0m[0m
-[0m[[0minfo[0m] [0m[32m- should retrieve values as a List when values is invoked[0m[0m
-[0m[[0minfo[0m] [0m[32mMap[0m[0m
-[0m[[0minfo[0m] [0m[32m- should retrieve keys as a List when keys is invoked[0m[0m
-[0m[[0minfo[0m] [0m[32mMap[0m[0m
-[0m[[0minfo[0m] [0m[32m- should retrieve keys as a KeySet[0m[0m
-[0m[[0minfo[0m] [0m[32mMap[0m[0m
-[0m[[0minfo[0m] [0m[32m- should not consider order when determing equivalency[0m[0m

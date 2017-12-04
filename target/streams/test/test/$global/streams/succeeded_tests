@@ -1,4 +1,9 @@
 #Successful Tests
-#Fri Dec 01 18:18:38 AEDT 2017
-example.HelloSpec=1512112718699
-cube.CubeCalculatorTest=1512112718631
+#Mon Dec 04 17:07:11 AEDT 2017
+example.HelloSpec=1512367631476
+example.MapSpec=1512367631454
+example.LambdaSpec=1512367631573
+example.ListSpec=1512367631549
+cube.CubeCalculatorTest=1512367631439
+example.TupleSpec=1512367631470
+example.SetSpec=1512367631451
