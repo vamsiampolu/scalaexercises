@@ -1,0 +1,15 @@
+[0m[[0minfo[0m] [0m[32mTvSetSpec:[0m[0m
+[0m[[0minfo[0m] [0m[32mAs a TV Set Owner [0m[0m
+[0m[[0minfo[0m] [0m[32mI want to be able to turn the TV on and off [0m[0m
+[0m[[0minfo[0m] [0m[32mSo I can watch TV when I want [0m[0m
+[0m[[0minfo[0m] [0m[32mAnd save energy when I'm not watching TV [0m[0m
+[0m[[0minfo[0m] [0m[32mFeature: TV Power Button[0m[0m
+[0m[[0minfo[0m] [0m[32m  Scenario: User presses Power Button when TV is OFF[0m[0m
+[0m[[0minfo[0m] [0m[32m    Given A TV Set that is switched off [0m[0m
+[0m[[0minfo[0m] [0m[32m    When The TV Power Button is pressed [0m[0m
+[0m[[0minfo[0m] [0m[32m    Then the TV should be switched on [0m[0m
+[0m[[0minfo[0m] [0m[31m  Scenario: User presses Power Button when TV is ON *** FAILED ***[0m[0m
+[0m[[0minfo[0m] [0m[31m  tv.isOn was false (TvSetSpec.scala:41)[0m[0m
+[0m[[0minfo[0m] [0m[31m    Given A TV Set that is switched off [0m[0m
+[0m[[0minfo[0m] [0m[31m    When The TV Power Button is pressed [0m[0m
+[0m[[0minfo[0m] [0m[31m    Then the TV should be switched on [0m[0m

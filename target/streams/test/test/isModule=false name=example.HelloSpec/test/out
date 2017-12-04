@@ -34,5 +34,4 @@
 [0m[[0minfo[0m] [0m[32m- should create singleton[0m[0m
 [0m[[0minfo[0m] [0m[32mCompanion Object[0m[0m
 [0m[[0minfo[0m] [0m[32m- should contain factory methods[0m[0m
-[0m[[0minfo[0m] [0m[32mCompanion Object[0m[0m
 [0m[[0minfo[0m] [0m[32m- should be able to access private members[0m[0m
