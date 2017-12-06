@@ -1,5 +1,6 @@
 package example
 
+import scala.sys.error
 import org.scalatest._
 import com.softwaremill.sttp._
 import com.softwaremill.sttp.json4s._
@@ -7,7 +8,6 @@ import com.softwaremill.sttp.json4s._
 case class HttpBinResponse(
   args: Map[String, String],
   origin: String,
-  headers: Map[String,String]
 )
 
 class SttpSpec extends FlatSpec with Matchers {
@@ -42,7 +42,7 @@ class SttpSpec extends FlatSpec with Matchers {
 
     val queryParams = Map("foo" -> "bar", "bugs" -> "life")
 
-    val endpoint:Uri = uri"http://httpbin.org/get?foo=bar"
+    val endpoint:Uri = uri"http://httpbin.org/get?$queryParams"
 
     val request = sttp
       .get(endpoint)
@@ -52,9 +52,26 @@ class SttpSpec extends FlatSpec with Matchers {
     // response.body is an Either
 
     response.code should be(200)
-    val res = response.body.fold(_ => { "Error" }, a => { a })
+    val res = response.body.fold(
+      _ => { error("Error") },
+      a => { a }
+    )
 
     res shouldBe a[HttpBinResponse]
-    println(res.origin)
+    res match {
+      case HttpBinResponse(_,origin) => {
+        println("-----------------------------")
+        print("The origin for the request is ")
+        print(origin)
+        println("-----------------------------")
+      }
+      case _ => "Error"
+    }
+   res.args should contain("foo" -> "bar")
+
+   // assert for a key or value independently if required
+   res.args should contain key("bugs")
+   res.args should contain value("life")
+   res.origin.length should be >10
   }
 }
