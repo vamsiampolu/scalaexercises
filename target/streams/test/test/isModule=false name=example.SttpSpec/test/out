@@ -1,0 +1,4 @@
+[0m[[0minfo[0m] [0m[32mSttpSpec:[0m[0m
+[0m[[0minfo[0m] [0m[32mSttp using HttpUrlConnection Backend[0m[0m
+[0m[[0minfo[0m] [0m[32m- should send a GET request and recieve a response string[0m[0m
+[0m[[0minfo[0m] [0m[32m- should send a GET request parse response as JSON[0m[0m
