@@ -1,17 +1,17 @@
-[0m[[0mdebug[0m] [0mRunning TaskDef(example.SetSpec, org.scalatest.tools.Framework$$anon$1@388e3a1e, false, [SuiteSelector])[0m
-[0m[[0mdebug[0m] [0mRunning TaskDef(example.TvSetSpec, org.scalatest.tools.Framework$$anon$1@388e3a1e, false, [SuiteSelector])[0m
-[0m[[0mdebug[0m] [0mRunning TaskDef(example.MapSpec, org.scalatest.tools.Framework$$anon$1@388e3a1e, false, [SuiteSelector])[0m
-[0m[[0mdebug[0m] [0mRunning TaskDef(example.ExampleSpec, org.scalatest.tools.Framework$$anon$1@388e3a1e, false, [SuiteSelector])[0m
-[0m[[0mdebug[0m] [0mRunning TaskDef(example.TupleSpec, org.scalatest.tools.Framework$$anon$1@388e3a1e, false, [SuiteSelector])[0m
-[0m[[0mdebug[0m] [0mRunning TaskDef(example.SttpSpec, org.scalatest.tools.Framework$$anon$1@388e3a1e, false, [SuiteSelector])[0m
-[0m[[0mdebug[0m] [0mRunning TaskDef(cube.CubeCalculatorTest, org.scalatest.tools.Framework$$anon$1@388e3a1e, false, [SuiteSelector])[0m
-[0m[[0mdebug[0m] [0mRunning TaskDef(example.HelloSpec, org.scalatest.tools.Framework$$anon$1@388e3a1e, false, [SuiteSelector])[0m
-[0m[[0mdebug[0m] [0mRunning TaskDef(example.LambdaSpec, org.scalatest.tools.Framework$$anon$1@388e3a1e, false, [SuiteSelector])[0m
-[0m[[0mdebug[0m] [0mRunning TaskDef(example.ListSpec, org.scalatest.tools.Framework$$anon$1@388e3a1e, false, [SuiteSelector])[0m
-[0m[[0minfo[0m] [0m[36mRun completed in 1 second, 358 milliseconds.[0m[0m
-[0m[[0minfo[0m] [0m[36mTotal number of tests run: 90[0m[0m
+[0m[[0mdebug[0m] [0mRunning TaskDef(example.LambdaSpec, org.scalatest.tools.Framework$$anon$1@3948de94, false, [SuiteSelector])[0m
+[0m[[0mdebug[0m] [0mRunning TaskDef(example.HelloSpec, org.scalatest.tools.Framework$$anon$1@3948de94, false, [SuiteSelector])[0m
+[0m[[0mdebug[0m] [0mRunning TaskDef(example.MapSpec, org.scalatest.tools.Framework$$anon$1@3948de94, false, [SuiteSelector])[0m
+[0m[[0mdebug[0m] [0mRunning TaskDef(example.TupleSpec, org.scalatest.tools.Framework$$anon$1@3948de94, false, [SuiteSelector])[0m
+[0m[[0mdebug[0m] [0mRunning TaskDef(example.TvSetSpec, org.scalatest.tools.Framework$$anon$1@3948de94, false, [SuiteSelector])[0m
+[0m[[0mdebug[0m] [0mRunning TaskDef(example.ExampleSpec, org.scalatest.tools.Framework$$anon$1@3948de94, false, [SuiteSelector])[0m
+[0m[[0mdebug[0m] [0mRunning TaskDef(example.SttpSpec, org.scalatest.tools.Framework$$anon$1@3948de94, false, [SuiteSelector])[0m
+[0m[[0mdebug[0m] [0mRunning TaskDef(cube.CubeCalculatorTest, org.scalatest.tools.Framework$$anon$1@3948de94, false, [SuiteSelector])[0m
+[0m[[0mdebug[0m] [0mRunning TaskDef(example.ListSpec, org.scalatest.tools.Framework$$anon$1@3948de94, false, [SuiteSelector])[0m
+[0m[[0mdebug[0m] [0mRunning TaskDef(example.SetSpec, org.scalatest.tools.Framework$$anon$1@3948de94, false, [SuiteSelector])[0m
+[0m[[0minfo[0m] [0m[36mRun completed in 2 seconds, 143 milliseconds.[0m[0m
+[0m[[0minfo[0m] [0m[36mTotal number of tests run: 91[0m[0m
 [0m[[0minfo[0m] [0m[36mSuites: completed 10, aborted 0[0m[0m
-[0m[[0minfo[0m] [0m[36mTests: succeeded 90, failed 0, canceled 0, ignored 0, pending 0[0m[0m
+[0m[[0minfo[0m] [0m[36mTests: succeeded 91, failed 0, canceled 0, ignored 0, pending 0[0m[0m
 [0m[[0minfo[0m] [0m[32mAll tests passed.[0m[0m
 [0m[[0mdebug[0m] [0mPassed tests:[0m
 [0m[[0mdebug[0m] [0m	example.ListSpec[0m

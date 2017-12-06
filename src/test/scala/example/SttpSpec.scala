@@ -2,15 +2,22 @@ package example
 
 import scala.sys.error
 import org.scalatest._
-import com.softwaremill.sttp._
-import com.softwaremill.sttp.json4s._
 
 case class HttpBinResponse(
   args: Map[String, String],
   origin: String,
 )
 
-class SttpSpec extends FlatSpec with Matchers {
+object HttpBinResponse {
+  import io.circe._
+  implicit val encoder: Encoder[HttpBinResponse] =
+      Encoder.forProduct2("args", "origin")(o => (o.args, o.origin))
+  implicit val decoder: Decoder[HttpBinResponse] =
+      Decoder.forProduct2("args", "origin")(HttpBinResponse.apply)
+}
+
+class SttpSpec extends FlatSpec with Matchers with EitherValues {
+  import com.softwaremill.sttp._
   behavior of "Sttp using HttpUrlConnection Backend"
 
   it should "send a GET request and recieve a response string" in {
@@ -36,7 +43,9 @@ class SttpSpec extends FlatSpec with Matchers {
     str should include("headers")
   }
 
-  it should "send a GET request parse response as JSON" in {
+  it should "send a GET request parse response as JSON using json4s" in {
+    import com.softwaremill.sttp.json4s._
+
     implicit val backend = HttpURLConnectionBackend()
 
 
@@ -67,11 +76,46 @@ class SttpSpec extends FlatSpec with Matchers {
       }
       case _ => "Error"
     }
-   res.args should contain("foo" -> "bar")
+    res.args should contain("foo" -> "bar")
 
-   // assert for a key or value independently if required
-   res.args should contain key("bugs")
-   res.args should contain value("life")
-   res.origin.length should be >10
+    // assert for a key or value independently if required
+    res.args should contain key "bugs"
+    res.args should contain value "life"
+    res.origin.length should be >10
+
+    // Look ma, EitherValues can extract values from Either automatically
+    // without having to write a lot of boilerplate
+    val rightValue = response.body.right.value
+    rightValue shouldBe a[HttpBinResponse]
+    rightValue.args should contain("foo" -> "bar")
+    rightValue.args should contain key "bugs"
+    rightValue.args should contain value "life"
+    rightValue.origin.length should be >10
+  }
+
+   it should "send a GET request parse response as JSON using circe" in {
+    import com.softwaremill.sttp.circe._
+
+    implicit val backend = HttpURLConnectionBackend()
+
+    val queryParams = Map("foo" -> "bar", "bugs" -> "life")
+
+    val endpoint:Uri = uri"http://httpbin.org/get?$queryParams"
+
+    val request = sttp
+      .get(endpoint)
+      .response(asJson[HttpBinResponse])
+
+      val response = request.send()
+      // response.body is an Either
+
+      response.code should be(200)
+
+      val rightValue = response.body.flatMap(a => { a }).right.value
+      rightValue shouldBe a[HttpBinResponse]
+      rightValue.args should contain("foo" -> "bar")
+      rightValue.args should contain key "bugs"
+      rightValue.args should contain value "life"
+      rightValue.origin.length should be >10
   }
 }

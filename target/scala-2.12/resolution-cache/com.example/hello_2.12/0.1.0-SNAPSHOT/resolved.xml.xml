@@ -4,7 +4,7 @@
 		module="hello_2.12"
 		revision="0.1.0-SNAPSHOT"
 		status="integration"
-		publication="20171206110217"
+		publication="20171206184312"
 	>
 		<description>
 		Hello
@@ -37,5 +37,9 @@
 		<dependency org="org.scalatest" name="scalatest_2.12" rev="3.0.3" conf="test->default(compile)"/>
 		<dependency org="com.softwaremill.sttp" name="core_2.12" rev="1.1.1" conf="compile->default(compile)"/>
 		<dependency org="com.softwaremill.sttp" name="json4s_2.12" rev="1.1.1" conf="compile->default(compile)"/>
+		<dependency org="io.circe" name="circe-core_2.12" rev="0.8.0" conf="compile->default(compile)"/>
+		<dependency org="io.circe" name="circe-generic_2.12" rev="0.8.0" conf="compile->default(compile)"/>
+		<dependency org="io.circe" name="circe-parser_2.12" rev="0.8.0" conf="compile->default(compile)"/>
+		<dependency org="com.softwaremill.sttp" name="circe_2.12" rev="1.1.1" conf="compile->default(compile)"/>
 	</dependencies>
 </ivy-module>
