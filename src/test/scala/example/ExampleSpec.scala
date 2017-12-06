@@ -3,7 +3,13 @@ package example
 import org.scalatest._ 
 import scala.collection.mutable.Stack
 
-class ExampleSpec extends FeatureSpec with GivenWhenThen with Matchers{
+class ExampleSpec extends FeatureSpec with GivenWhenThen with Matchers with BeforeAndAfter {
+  var stack: Stack[Int] = _
+
+  before {
+    stack = new Stack[Int]
+  }
+
     feature("The user can pop an element of the stack") {
 
         info("As a programmer")
@@ -12,7 +18,6 @@ class ExampleSpec extends FeatureSpec with GivenWhenThen with Matchers{
 
         scenario("pop is invoked by user on non-empty stack") {
             Given("a non-empty stack")
-            val stack = new Stack[Int]
             stack.push(2)
             stack.push(5)
             val oldSize = stack.size
@@ -29,7 +34,6 @@ class ExampleSpec extends FeatureSpec with GivenWhenThen with Matchers{
 
         scenario("pop is invoked by user on empty stack") {
             Given("an empty stack")
-            val stack = new Stack[Int]
             When("pop is invoked on the stack")
             Then("NoSuchElementException is thrown")
             a [NoSuchElementException] should be thrownBy stack.pop

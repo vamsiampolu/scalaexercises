@@ -1,14 +1,14 @@
 #Successful Tests
-#Thu Dec 07 00:31:49 AEDT 2017
-example.TupleSpec=1512567107947
-example.StringFormatting=1512567107910
-example.SttpSpec=1512567109859
-example.MapSpec=1512567107932
-example.OptionSpec=1512567107972
-cube.CubeCalculatorTest=1512567107955
-example.TvSetSpec=1512567107910
-example.ExampleSpec=1512567107952
-example.HelloSpec=1512567107945
-example.SetSpec=1512567107947
-example.LambdaSpec=1512567107933
-example.ListSpec=1512567107967
+#Thu Dec 07 10:44:56 AEDT 2017
+example.TupleSpec=1512603894496
+example.StringFormatting=1512603894520
+example.SttpSpec=1512603896076
+example.OptionSpec=1512603894593
+example.MapSpec=1512603894619
+cube.CubeCalculatorTest=1512603894488
+example.TvSetSpec=1512603894547
+example.ExampleSpec=1512603894495
+example.HelloSpec=1512603894546
+example.SetSpec=1512603894503
+example.LambdaSpec=1512603894537
+example.ListSpec=1512603894564
