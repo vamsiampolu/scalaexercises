@@ -1,0 +1,10 @@
+[0m[[0minfo[0m] [0m[32mStringFormatting:[0m[0m
+[0m[[0minfo[0m] [0m[32m%s[0m[0m
+[0m[[0minfo[0m] [0m[32m- should allow for string interpolation[0m[0m
+[0m[[0minfo[0m] [0m[32m%c[0m[0m
+[0m[[0minfo[0m] [0m[32m- should accept a char and convert it to a string[0m[0m
+[0m[[0minfo[0m] [0m[32m- should accept unicode characters[0m[0m
+[0m[[0minfo[0m] [0m[32m- should accept octal characters[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work with escape sequences[0m[0m
+[0m[[0minfo[0m] [0m[32m%d[0m[0m
+[0m[[0minfo[0m] [0m[32m- should accept numbers and interpolate them inside the string[0m[0m
