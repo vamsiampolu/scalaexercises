@@ -8,7 +8,7 @@
                                                  
                                                </testcase><testcase classname="example.OptionSpec" name="Option should be None if no value is supplied" time="0.0">
                                                  
-                                               </testcase><testcase classname="example.OptionSpec" name="getOrElse should retrieve value if it exists" time="0.004">
+                                               </testcase><testcase classname="example.OptionSpec" name="getOrElse should retrieve value if it exists" time="0.001">
                                                  
                                                </testcase><testcase classname="example.OptionSpec" name="getOrElse should retrieve default value if None" time="0.001">
                                                  
@@ -20,11 +20,11 @@
                                                  
                                                </testcase><testcase classname="example.OptionSpec" name="Pattern Matching should pattern matching be None" time="0.0">
                                                  
-                                               </testcase><testcase classname="example.OptionSpec" name="Higher Order Functions should work with map" time="0.001">
+                                               </testcase><testcase classname="example.OptionSpec" name="Higher Order Functions should work with map" time="0.003">
                                                  
-                                               </testcase><testcase classname="example.OptionSpec" name="Higher Order Functions should be unboxed out of Some(Int) using fold" time="0.0">
+                                               </testcase><testcase classname="example.OptionSpec" name="Higher Order Functions should be unboxed out of Some(Int) using fold" time="0.002">
                                                  
-                                               </testcase><testcase classname="example.OptionSpec" name="Higher Order Functions should return default value on fold if None" time="0.001">
+                                               </testcase><testcase classname="example.OptionSpec" name="Higher Order Functions should return default value on fold if None" time="0.0">
                                                  
                                                </testcase>
                      <system-out></system-out>

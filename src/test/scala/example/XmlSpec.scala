@@ -419,4 +419,38 @@ class XmlSpec extends FlatSpec with Matchers with BeforeAndAfter with OptionValu
       ("Portished","Third","48:50")
     )
   }
+
+  it should "allow converting from Scala to XML" in {
+
+    val artists = (music \ "artist").map { artist =>
+      val name = (artist \ "@name").text
+      val albums = (artist \ "album").map { album =>
+        val title = (album \ "@title").text
+        val description = (album \ "description").text
+        val songList = (album \ "song").map { song =>
+          Song((song \ "@title").text, (song \ "@length").text)
+        }
+        Album(title, songList, description)
+      }
+      Artist(name, albums)
+    }
+
+    val marshalled =
+      <music>
+      { artists.map { artist =>
+        <artist name={artist.name}>
+        { artist.albums.map { album =>
+          <album title={album.title}>
+          { album.songs.map(song => <song title={song.title} length={song.length}/>) }
+          <description>{album.description}</description>
+        </album>
+        }}
+      </artist>
+      }}
+    </music>
+
+  // SUper hard to test...
+    // marshalled.toString should be(music.toString)
+     pending
+  }
 }
