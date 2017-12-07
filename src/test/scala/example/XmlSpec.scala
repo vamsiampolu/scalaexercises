@@ -338,7 +338,7 @@ class XmlSpec extends FlatSpec with Matchers with BeforeAndAfter with OptionValu
 
     val result = foo.child.map(x => {
       x match {
-        case <bar>{text}</bar> => (x.label, x.attributes.asAttrMap, text)
+        case <bar>{node}</bar> => (x.label, x.attributes.asAttrMap, node.text)
         case <baz>_</baz> => (x.label, Map[String,String](), "")
         case _ => ("", Map[String,String](), "")
       }
@@ -350,9 +350,7 @@ class XmlSpec extends FlatSpec with Matchers with BeforeAndAfter with OptionValu
       }
     })
 
-    result.toString should be(expected.toString)
-    // result should contain allElementsOf expected
-    // result should contain(expected(1))
+    result should contain allElementsOf expected
   }
 
   behavior of "fromString"
