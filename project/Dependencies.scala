@@ -13,4 +13,6 @@ object Dependencies {
   ).map(_ % circeVersion)
 
   lazy val circe_sttp = "com.softwaremill.sttp" %% "circe" % "1.1.1"
+
+  lazy val scalaXml = "org.scala-lang" % "scala-xml" % "2.11.0-M4"
 }

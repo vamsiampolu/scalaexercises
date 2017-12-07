@@ -8,9 +8,10 @@
 [0m[[0minfo[0m] [0m[32misEmpty[0m[0m
 [0m[[0minfo[0m] [0m[32m- should when applied on Some('Value') be false[0m[0m
 [0m[[0minfo[0m] [0m[32m- should when applied on None be true[0m[0m
-[0m[[0minfo[0m] [0m[32mOption[String][0m[0m
+[0m[[0minfo[0m] [0m[32mPattern Matching[0m[0m
 [0m[[0minfo[0m] [0m[32m- should pattern matching be FoundValue[0m[0m
 [0m[[0minfo[0m] [0m[32m- should pattern matching be None[0m[0m
+[0m[[0minfo[0m] [0m[32mHigher Order Functions[0m[0m
 [0m[[0minfo[0m] [0m[32m- should work with map[0m[0m
 [0m[[0minfo[0m] [0m[32m- should be unboxed out of Some(Int) using fold[0m[0m
 [0m[[0minfo[0m] [0m[32m- should return default value on fold if None[0m[0m

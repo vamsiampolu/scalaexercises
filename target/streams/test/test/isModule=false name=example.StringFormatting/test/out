@@ -8,3 +8,5 @@
 [0m[[0minfo[0m] [0m[32m- should work with escape sequences[0m[0m
 [0m[[0minfo[0m] [0m[32m%d[0m[0m
 [0m[[0minfo[0m] [0m[32m- should accept numbers and interpolate them inside the string[0m[0m
+[0m[[0minfo[0m] [0m[32mformatting[0m[0m
+[0m[[0minfo[0m] [0m[32m- should allow multiple items[0m[0m

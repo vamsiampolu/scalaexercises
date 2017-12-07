@@ -7,8 +7,21 @@
 		revision="0.1.0-SNAPSHOT"
 		conf="runtime-internal"
 		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool"
-		date="20171206184312"/>
+		date="20171207114059"/>
 	<dependencies>
+		<module organisation="org.scala-lang" name="scala-xml">
+			<revision name="2.11.0-M4" status="release" pubdate="20130711182358" resolver="public" artresolver="public" homepage="http://www.scala-lang.org/" extra-info.apiURL="http://www.scala-lang.org/api/2.11.0-M4/" downloaded="true" searched="true" default="false" conf="default, compile, runtime, default(compile), master" position="24">
+				<license name="BSD-like" url="http://www.scala-lang.org/downloads/license.html
+         "/>
+				<metadata-artifact status="successful" details="" size="1876" time="709" location="/Users/localuser/.ivy2/cache/org.scala-lang/scala-xml/ivy-2.11.0-M4.xml" searched="true" original-local-location="/Users/localuser/.ivy2/cache/org.scala-lang/scala-xml/ivy-2.11.0-M4.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scala-lang/scala-xml/2.11.0-M4/scala-xml-2.11.0-M4.pom"/>
+				<caller organisation="com.example" name="hello_2.12" conf="compile, runtime-internal, runtime, optional" rev="2.11.0-M4" rev-constraint-default="2.11.0-M4" rev-constraint-dynamic="2.11.0-M4" callerrev="0.1.0-SNAPSHOT"/>
+				<artifacts>
+					<artifact name="scala-xml" type="jar" ext="jar" status="successful" details="" size="636403" time="2098" location="/Users/localuser/.ivy2/cache/org.scala-lang/scala-xml/jars/scala-xml-2.11.0-M4.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/scala-lang/scala-xml/2.11.0-M4/scala-xml-2.11.0-M4.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
 		<module organisation="com.softwaremill.sttp" name="circe_2.12">
 			<revision name="1.1.1" status="release" pubdate="20171129195009" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://softwaremill.com/open-source" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="23">
 				<license name="Apache-2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
@@ -59,24 +72,24 @@
 			</revision>
 		</module>
 		<module organisation="io.circe" name="circe-generic_2.12">
-			<revision name="0.8.0" status="release" pubdate="20170510000648" resolver="public" artresolver="public" homepage="https://github.com/circe/circe" extra-info.apiURL="https://circe.github.io/circe/api/" downloaded="true" searched="true" default="false" conf="default, compile, runtime, default(compile), master" position="18">
+			<revision name="0.8.0" status="release" pubdate="20170510000648" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/circe/circe" extra-info.apiURL="https://circe.github.io/circe/api/" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="18">
 				<license name="Apache 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
-				<metadata-artifact status="successful" details="" size="2569" time="873" location="/Users/localuser/.ivy2/cache/io.circe/circe-generic_2.12/ivy-0.8.0.xml" searched="true" original-local-location="/Users/localuser/.ivy2/cache/io.circe/circe-generic_2.12/ivy-0.8.0.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/io/circe/circe-generic_2.12/0.8.0/circe-generic_2.12-0.8.0.pom"/>
+				<metadata-artifact status="no" details="" size="3536" time="0" location="/Users/localuser/.ivy2/cache/io.circe/circe-generic_2.12/ivy-0.8.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/io/circe/circe-generic_2.12/0.8.0/circe-generic_2.12-0.8.0.pom"/>
 				<caller organisation="com.example" name="hello_2.12" conf="compile, runtime-internal, runtime, optional" rev="0.8.0" rev-constraint-default="0.8.0" rev-constraint-dynamic="0.8.0" callerrev="0.1.0-SNAPSHOT"/>
 				<artifacts>
-					<artifact name="circe-generic_2.12" type="jar" ext="jar" status="successful" details="" size="138330" time="1338" location="/Users/localuser/.ivy2/cache/io.circe/circe-generic_2.12/jars/circe-generic_2.12-0.8.0.jar">
+					<artifact name="circe-generic_2.12" type="jar" ext="jar" status="no" details="" size="138330" time="0" location="/Users/localuser/.ivy2/cache/io.circe/circe-generic_2.12/jars/circe-generic_2.12-0.8.0.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/io/circe/circe-generic_2.12/0.8.0/circe-generic_2.12-0.8.0.jar"/>
 					</artifact>
 				</artifacts>
 			</revision>
 		</module>
 		<module organisation="com.chuusai" name="shapeless_2.12">
-			<revision name="2.3.2" status="release" pubdate="20161102205049" resolver="public" artresolver="public" homepage="https://github.com/milessabin/shapeless" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="19">
+			<revision name="2.3.2" status="release" pubdate="20161102205049" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/milessabin/shapeless" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="19">
 				<license name="Apache 2" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
-				<metadata-artifact status="successful" details="" size="2286" time="821" location="/Users/localuser/.ivy2/cache/com.chuusai/shapeless_2.12/ivy-2.3.2.xml" searched="true" original-local-location="/Users/localuser/.ivy2/cache/com.chuusai/shapeless_2.12/ivy-2.3.2.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/chuusai/shapeless_2.12/2.3.2/shapeless_2.12-2.3.2.pom"/>
+				<metadata-artifact status="no" details="" size="3226" time="0" location="/Users/localuser/.ivy2/cache/com.chuusai/shapeless_2.12/ivy-2.3.2.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/chuusai/shapeless_2.12/2.3.2/shapeless_2.12-2.3.2.pom"/>
 				<caller organisation="io.circe" name="circe-generic_2.12" conf="default, compile, runtime, master" rev="2.3.2" rev-constraint-default="2.3.2" rev-constraint-dynamic="2.3.2" callerrev="0.8.0"/>
 				<artifacts>
-					<artifact name="shapeless_2.12" type="bundle" ext="jar" status="successful" details="" size="2829843" time="4713" location="/Users/localuser/.ivy2/cache/com.chuusai/shapeless_2.12/bundles/shapeless_2.12-2.3.2.jar">
+					<artifact name="shapeless_2.12" type="bundle" ext="jar" status="no" details="" size="2829843" time="0" location="/Users/localuser/.ivy2/cache/com.chuusai/shapeless_2.12/bundles/shapeless_2.12-2.3.2.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/chuusai/shapeless_2.12/2.3.2/shapeless_2.12-2.3.2.jar"/>
 					</artifact>
 				</artifacts>

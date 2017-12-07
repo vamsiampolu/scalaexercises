@@ -12,5 +12,6 @@ lazy val root = (project in file(".")).
     libraryDependencies += sbbt,
     libraryDependencies += json4s,
     libraryDependencies ++= circe,
-    libraryDependencies += circe_sttp
+    libraryDependencies += circe_sttp,
+    libraryDependencies += scalaXml
   )

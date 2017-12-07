@@ -1,0 +1,24 @@
+[0m[[0minfo[0m] [0m[32mXmlSpec:[0m[0m
+[0m[[0minfo[0m] [0m[32mscala.xml[0m[0m
+[0m[[0minfo[0m] [0m[32m- should convert XML literals to scala.xml.Elem[0m[0m
+[0m[[0minfo[0m] [0m[32m- should allow for retrieving text from an element[0m[0m
+[0m[[0minfo[0m] [0m[32mprojections[0m[0m
+[0m[[0minfo[0m] [0m[32m- should use \ to retrieve direct children elements of type[0m[0m
+[0m[[0minfo[0m] [0m[32m- should use \\ to retrieve descendents of type[0m[0m
+[0m[[0minfo[0m] [0m[32m- should use @<attributename> to retrieve attributeswith \[0m[0m
+[0m[[0minfo[0m] [0m[32m- should query for attribute in the same way using \[0m[0m
+[0m[[0minfo[0m] [0m[32m- should query all attributes and return a List of values when using \\[0m[0m
+[0m[[0minfo[0m] [0m[32mlabel[0m[0m
+[0m[[0minfo[0m] [0m[32m- should retrieve label of element[0m[0m
+[0m[[0minfo[0m] [0m[32mattribute[0m[0m
+[0m[[0minfo[0m] [0m[32m- should use attribute to retrieve a single attribute on a node[0m[0m
+[0m[[0minfo[0m] [0m[32mattributes[0m[0m
+[0m[[0minfo[0m] [0m[32m- should use attributes to retrieve all attributes on a node[0m[0m
+[0m[[0minfo[0m] [0m[32m- should retrieve value of a single attribute using unsafe access[0m[0m
+[0m[[0minfo[0m] [0m[32m- should retrieve value using Option[_] using get method[0m[0m
+[0m[[0minfo[0m] [0m[32m- should allow for the use of foldLeft[0m[0m
+[0m[[0minfo[0m] [0m[32m- should use method asAttrMap to convert attributes to Map[0m[0m
+[0m[[0minfo[0m] [0m[32m- should retrieve a single attribute from a scala.xml.MetaData object[0m[0m
+[0m[[0minfo[0m] [0m[32mchild[0m[0m
+[0m[[0minfo[0m] [0m[32m- should return the immediate child nodes[0m[0m
+[0m[[0minfo[0m] [0m[32m- should allow use of map and filter[0m[0m
