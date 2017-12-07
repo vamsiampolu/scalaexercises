@@ -22,3 +22,20 @@
 [0m[[0minfo[0m] [0m[32mchild[0m[0m
 [0m[[0minfo[0m] [0m[32m- should return the immediate child nodes[0m[0m
 [0m[[0minfo[0m] [0m[32m- should allow use of map and filter[0m[0m
+[0m[[0minfo[0m] [0m[32mfromString[0m[0m
+[0m[[0minfo[0m] [0m[31m- should read a String and convert it to an scala.xml.Elem *** FAILED ***[0m[0m
+[0m[[0minfo[0m] [0m[31m  <foo>[0m[0m
+[0m[[0minfo[0m] [0m[31m       <bar target="anyone" style="pleasent" type="greet">hi</bar>[0m[0m
+[0m[[0minfo[0m] [0m[31m          <bar type="count">1</bar>[0m[0m
+[0m[[0minfo[0m] [0m[31m          <bar type="color">yellow</bar>[0m[0m
+[0m[[0minfo[0m] [0m[31m          <baz>[0m[0m
+[0m[[0minfo[0m] [0m[31m            <bar type="bad">Bad</bar>[0m[0m
+[0m[[0minfo[0m] [0m[31m          </baz>[0m[0m
+[0m[[0minfo[0m] [0m[31m        </foo> was not equal to <foo>[0m[0m
+[0m[[0minfo[0m] [0m[31m        <bar type="greet" style="pleasent" target="anyone">hi</bar>[0m[0m
+[0m[[0minfo[0m] [0m[31m        <bar type="count">1</bar>[0m[0m
+[0m[[0minfo[0m] [0m[31m        <bar type="color">yellow</bar>[0m[0m
+[0m[[0minfo[0m] [0m[31m        <baz>[0m[0m
+[0m[[0minfo[0m] [0m[31m          <bar type="bad">Bad</bar>[0m[0m
+[0m[[0minfo[0m] [0m[31m        </baz>[0m[0m
+[0m[[0minfo[0m] [0m[31m      </foo> (XmlSpec.scala:282)[0m[0m

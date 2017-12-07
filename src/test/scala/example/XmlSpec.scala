@@ -84,7 +84,6 @@ class XmlSpec extends FlatSpec with Matchers with BeforeAndAfter with OptionValu
   it should "query all attributes and return a List of values when using \\\\" in {
     val expected = List("greet", "count", "color", "bad")
     val result = (foo \\ "@type").map(x => { x.text })
-    println(result)
   }
 
   behavior of "label"
@@ -262,6 +261,23 @@ class XmlSpec extends FlatSpec with Matchers with BeforeAndAfter with OptionValu
     result.toString should be(expected.toString)
     // result should contain allElementsOf expected
     // result should contain(expected(1))
+  }
+
+  behavior of "fromString"
+
+  it should "read a String and convert it to an scala.xml.Elem" in {
+    val str = """<foo>
+      <bar type="greet" style="pleasent" target="anyone">hi</bar>
+      <bar type="count">1</bar>
+      <bar type="color">yellow</bar>
+      <baz>
+        <bar type="bad">Bad</bar>
+      </baz>
+    </foo>
+    """
+
+    val result = XML.loadString(str)
+    result should be(foo)
   }
 
 }
