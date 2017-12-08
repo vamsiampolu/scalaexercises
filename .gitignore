@@ -1,8 +1,44 @@
 
-# Created by https://www.gitignore.io/api/scala
+# Created by https://www.gitignore.io/api/java,scala,sbt
 
-### Scala ###
+### Java ###
+# Compiled class file
 *.class
+
+# Log file
 *.log
 
-# End of https://www.gitignore.io/api/scala
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+### SBT ###
+# Simple Build Tool
+# http://www.scala-sbt.org/release/docs/Getting-Started/Directories.html#configuring-version-control
+
+dist/*
+target/
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+.history
+.cache
+.lib/
+
+### Scala ###
+
+# End of https://www.gitignore.io/api/java,scala,sbt
