@@ -534,8 +534,7 @@ class XmlSpec extends FlatSpec with Matchers with BeforeAndAfter with OptionValu
       Artist(name, albums)
     }
 
-    val marshalled =
-      <music>
+    val result = <music>
       { artists.map { artist =>
         <artist name={artist.name}>
         { artist.albums.map { album =>
@@ -548,8 +547,7 @@ class XmlSpec extends FlatSpec with Matchers with BeforeAndAfter with OptionValu
       }}
     </music>
 
-  // SUper hard to test...
-    // marshalled.toString should be(music.toString)
-     pending
+    // (music child) should contain atleastOneElementOf (result child)
+    pending
   }
 }
