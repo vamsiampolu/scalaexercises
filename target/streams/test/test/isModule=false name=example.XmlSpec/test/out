@@ -24,6 +24,15 @@
 [0m[[0minfo[0m] [0m[32m- should allow use of map and filter[0m[0m
 [0m[[0minfo[0m] [0m[32mfromString[0m[0m
 [0m[[0minfo[0m] [0m[32m- should read a String and convert it to an scala.xml.Elem[0m[0m
+[0m[[0minfo[0m] [0m[32mpattern matching gotchas[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work correctly with an empty self-closing node[0m[0m
+[0m[[0minfo[0m] [0m[32m- should throw a MatchError when matching non-empty tags as if they were empty self-closing tags[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work correctly when exact xml node with text is specified[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work with interpolation pattern on text[0m[0m
+[0m[[0minfo[0m] [0m[32m- should throw a MatchError when more than one element exists as a child of xml[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work correctly when using scala with pattern[0m[0m
+[0m[[0minfo[0m] [0m[32m- should does not compile when matching on attributes[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work correctly when using guards with pattern matching[0m[0m
 [0m[[0minfo[0m] [0m[32mmarshalling/unmarshalling XML[0m[0m
 [0m[[0minfo[0m] [0m[32m- should convert XML elements to classes[0m[0m
 [0m[[0minfo[0m] [0m[32m- should allow creating nested objects in XML[0m[0m

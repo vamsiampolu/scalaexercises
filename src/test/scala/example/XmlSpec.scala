@@ -4,8 +4,16 @@ import scala.xml._
 import org.scalatest._
 
 /* Reading List:
+  Note: The author of the first blog post has not escaped \ and \\ and thus his source code samples show space instead of \ and \ instead of \\. This can be very confusing.
+ 
+ * http://bcomposes.com/2012/05/04/basic-xml-processing-with-scala/
+ 
  * https://alvinalexander.com/scala/xml-parsing-xpath-extract-xml-tag-attributes
+ 
  * https://alvinalexander.com/scala/how-to-extract-data-from-xml-nodes-in-scala
+ 
+ // Pattern Matching Lament taken from:
+ * http://www.codecommit.com/blog/scala/working-with-scalas-xml-support
 */
 
 case class Song(val title: String, val length: String) {
@@ -368,6 +376,99 @@ class XmlSpec extends FlatSpec with Matchers with BeforeAndAfter with OptionValu
 
     val result = XML.loadString(str)
     result should be(foo)
+  }
+
+  behavior of "pattern matching gotchas"
+
+  it should "work correctly with an empty self-closing node" in {
+    val input = <foo/>
+    val expected = "foo"
+
+    val result = input match {
+      case <foo/> => expected
+      case _ => "bar"
+    }
+
+    result should be(expected)
+  }
+
+  it should "throw a MatchError when matching non-empty tags as if they were empty self-closing tags" in {
+    val input = <foo>bar</foo>
+
+    lazy val result = input match {
+      case <foo/> => "foo"
+      case <bar/> => "bar"
+    }
+    a [scala.MatchError] should be thrownBy println(result)
+  }
+
+  it should "work correctly when exact xml node with text is specified" in {
+    val input = <foo>bar</foo>
+    val expected = "foobar"
+
+    val result = input match {
+      case <foo>bar</foo> => expected
+      case <bar/> => "Bar"
+    }
+
+    result should be(expected)
+  }
+
+  it should "work with interpolation pattern on text" in {
+    val input = <foo>bar</foo>
+    val expected = "foobar"
+
+    val result = input match {
+      case <foo>{ node }</foo> => "foo" + node.text
+      case <bar/> => "Bar"
+    }
+
+    result should be(expected)
+  }
+
+  it should "throw a MatchError when more than one element exists as a child of xml" in {
+    val input = <foo>bar<baz/></foo>
+    lazy val result = input match {
+      case <foo>{ node }</foo> => "foo" + node.text
+      case <bar/> => "bar"
+    }
+
+    a [scala.MatchError] should be thrownBy println(result)
+  }
+
+  it should "work correctly when using scala with pattern" in {
+    val input = <foo>bar<baz/></foo>
+    // same as NodeSeq.fromSeq(input.child) but looks nicer
+    val expected = NodeSeq fromSeq { input child }
+
+    val result = input match {
+      case <foo>{ ns @ _* }</foo> => NodeSeq fromSeq(ns)
+      case <bar/> => "bar"
+    }
+
+    result should be(expected)
+  }
+
+  it should "does not compile when matching on attributes" in {
+    val input = <foo type="bar"/>
+     """
+      input match {
+        case <foo type="bar"/> => "foobar"
+        case <bar/> => "nope"
+      }
+     """ shouldNot compile
+  }
+
+  it should "work correctly when using guards with pattern matching" in {
+    val input = <foo type="bar"/>
+    val expected = "foobar"
+
+    val result = input match {
+      case n @ <foo/> if (n \ "@type" text) == "bar" => expected
+      case <bar/> => "nope"
+    }
+
+    result should be(expected)
   }
 
   behavior of "marshalling/unmarshalling XML"
