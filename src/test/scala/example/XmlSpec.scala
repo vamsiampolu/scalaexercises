@@ -16,6 +16,7 @@ import org.scalatest._
  * http://www.codecommit.com/blog/scala/working-with-scalas-xml-support
 */
 
+
 case class Song(val title: String, val length: String) {
   lazy val time: Int = {
     val split = length split(":")
@@ -468,6 +469,16 @@ class XmlSpec extends FlatSpec with Matchers with BeforeAndAfter with OptionValu
       case <bar/> => "nope"
     }
 
+    result should be(expected)
+  }
+
+  it should "match tag irrespective of attached namespace" in {
+    val input = <w:foo type ="bar" />
+    val expected = "Foo"
+    val result = input match {
+      case <foo /> => expected
+      case <bar /> => "Bar"
+    }
     result should be(expected)
   }
 
