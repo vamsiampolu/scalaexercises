@@ -120,5 +120,4 @@ object HttpBinResponse {
       rightValue.args should contain value "life"
       rightValue.origin.length should be >10
   }
-
 }

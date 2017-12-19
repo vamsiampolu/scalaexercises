@@ -5,7 +5,9 @@ import java.time._
 import java.time.format._
 
 import org.json4s.{CustomSerializer, DefaultFormats}
-import org.json4s.native.Serialization.{read}
+import org.json4s._
+import org.json4s.native.JsonMethods._
+import org.json4s.native.Serialization.{read, write}
 import org.json4s.JsonAST.{JString, JNull}
 
 object LocalDateSerializer extends CustomSerializer[LocalDate](format => ({
@@ -49,7 +51,34 @@ class Json4sSpec extends FlatSpec with Matchers {
 
     val result = read[Dates] { input }
 
-    println(result)
     result should be(expected)
+  }
+
+  behavior of "write"
+
+  it should "accept a Scala object and write to JSON using custom formatter" in {
+    implicit val formats =  org.json4s.DefaultFormats ++ List(LocalDateSerializer)
+
+    val input = Dates(
+      LocalDate.of(1999,12,10),
+      LocalDate.of(1999,12,16),
+      LocalDate.of(2000,1,2),
+      LocalDate.of(2000,1,16)
+    )
+
+    val result = write[Dates](input)
+    val parsedResult = parse(result)
+
+    val createdAt = (parsedResult \ "createdAt")
+    createdAt.values should be("1999-12-10")
+
+    val updatedAt = (parsedResult \ "updatedAt")
+    updatedAt.values should be("1999-12-16")
+
+    val startDate = (parsedResult \ "startDate")
+    startDate.values should be("2000-01-02")
+
+    val endDate = (parsedResult \ "endDate")
+    endDate.values should be("2000-01-16")
   }
 }
