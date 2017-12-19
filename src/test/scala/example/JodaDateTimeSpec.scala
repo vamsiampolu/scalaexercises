@@ -3,7 +3,7 @@ package example
 import org.scalatest._
 import com.github.nscala_time.time.Imports._
 
-class DateTimeSpec extends FlatSpec with Matchers {
+class JodaDateTimeSpec extends FlatSpec with Matchers {
   behavior of "LocalDate.parse"
 
   it should "accept a String and return a LocalDate instance" in {
