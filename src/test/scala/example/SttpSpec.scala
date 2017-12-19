@@ -16,7 +16,8 @@ object HttpBinResponse {
       Decoder.forProduct2("args", "origin")(HttpBinResponse.apply)
 }
 
-class SttpSpec extends FlatSpec with Matchers with EitherValues {
+ class SttpSpec extends FlatSpec with Matchers with EitherValues {
+
   import com.softwaremill.sttp._
   behavior of "Sttp using HttpUrlConnection Backend"
 
@@ -42,6 +43,7 @@ class SttpSpec extends FlatSpec with Matchers with EitherValues {
     str should include("args")
     str should include("headers")
   }
+
 
   it should "send a GET request parse response as JSON using json4s" in {
     import com.softwaremill.sttp.json4s._
@@ -118,4 +120,5 @@ class SttpSpec extends FlatSpec with Matchers with EitherValues {
       rightValue.args should contain value "life"
       rightValue.origin.length should be >10
   }
+
 }

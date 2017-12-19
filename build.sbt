@@ -8,11 +8,12 @@ lazy val root = (project in file(".")).
       version      := "0.1.0-SNAPSHOT"
     )),
     name := "Hello",
+     libraryDependencies += sbbt,
+     libraryDependencies += sttp_json4s,
+     libraryDependencies ++= circe,
+     libraryDependencies += circe_sttp,
     libraryDependencies += scalaTest % Test,
-    libraryDependencies += sbbt,
-    libraryDependencies += json4s,
-    libraryDependencies ++= circe,
-    libraryDependencies += circe_sttp,
     libraryDependencies += scalaXml,
-    libraryDependencies += nscalatime
+    libraryDependencies += nscalatime,
+    libraryDependencies ++= json4s
   )
