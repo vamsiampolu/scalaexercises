@@ -13,5 +13,6 @@ lazy val root = (project in file(".")).
     libraryDependencies += json4s,
     libraryDependencies ++= circe,
     libraryDependencies += circe_sttp,
-    libraryDependencies += scalaXml
+    libraryDependencies += scalaXml,
+    libraryDependencies += nscalatime
   )
