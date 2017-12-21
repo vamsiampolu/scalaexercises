@@ -23,6 +23,31 @@ object LocalDateSerializer extends CustomSerializer[LocalDate](format => ({
 
 case class Dates(createdAt: LocalDate, updatedAt: LocalDate, startDate: LocalDate, endDate: LocalDate )
 
+case class Employee(
+  firstName: String,
+  lastName: String,
+  designation: String,
+  joiningDate: LocalDate,
+  dateOfBirth: LocalDate,
+  middleName: Option[String]
+)
+
+case class Manager(
+  identity: Employee,
+  division: String,
+  charecterstics: List[String],
+  reportsTo: Employee,
+  manages: List[Employee]
+)
+
+case class Task(
+  name: String,
+  assignedTo: Employee,
+  supervisor: Employee,
+  dates: Dates,
+  manager: Manager
+)
+
 
 class Json4sSpec extends FlatSpec with Matchers {
   behavior of "read"
@@ -54,6 +79,155 @@ class Json4sSpec extends FlatSpec with Matchers {
     result should be(expected)
   }
 
+  it should "parse a complex data structure without a formatter" in {
+    val middleName:Option[String] = None
+    implicit val formats =  org.json4s.DefaultFormats ++ List(LocalDateSerializer)
+    val assignedTo = Employee(
+      "Janet",
+      "Smith",
+      "Design Engineer",
+      LocalDate.of(1994,6,6),
+      LocalDate.of(1983,2,28),
+      middleName
+    )
+    val supervisor = Employee(
+      "Jamie",
+      "Black",
+      "Head of Design",
+      LocalDate.of(1990,6,6),
+      LocalDate.of(1974,2,28),
+      middleName
+     )
+
+    val managerPerson = Employee(
+      "Jack",
+      "Wilshere",
+      "VP Design",
+      LocalDate.of(1980,6,26),
+      LocalDate.of(1954,2,28),
+      middleName
+     )
+
+    val ceo = Employee(
+      "Jennifer",
+      "Adams",
+      "CEO",
+      LocalDate.of(1985,6,26),
+      LocalDate.of(1964,2,28),
+      middleName
+    )
+
+    val manager = Manager(
+      managerPerson, 
+      "Design",
+      List(
+        "Old Fashioned",
+        "Esoteric",
+        "Pedantic"
+      ),
+      ceo,
+      List[Employee](assignedTo, supervisor)
+    )
+
+    val dates = Dates(
+      LocalDate.of(1999,12,10),
+      LocalDate.of(1999,12,16),
+      LocalDate.of(2000,1,2),
+      LocalDate.of(2000,1,16)
+    )
+
+    val expected = Task(
+      "Obsidian",
+      assignedTo,
+      supervisor,
+      dates,
+      manager
+    )
+
+    val input = """
+      {
+	"name": "Obsidian",
+	"assignedTo": {
+		"firstName": "Janet",
+		"lastName": "Smith",
+		"designation": "Design Engineer",
+		"joiningDate": "1994-06-06",
+		"dateOfBirth": "1983-02-28"
+	},
+	"supervisor": {
+		"firstName": "Jamie",
+		"lastName": "Black",
+		"designation": "Head of Design",
+		"joiningDate": "1990-06-06",
+		"dateOfBirth": "1974-02-28"
+	},
+	"manager": {
+		"identity": {
+			"firstName": "Jack",
+			"lastName": "Wilshere",
+			"designation": "VP Design",
+			"joiningDate": "1980-06-26",
+			"dateOfBirth": "1954-02-28"
+		},
+		"division": "Design",
+		"charecterstics": [
+			"Old Fashioned",
+			"Esoteric",
+			"Pedantic"
+		],
+		"reportsTo": {
+			"firstName": "Jennifer",
+			"lastName": "Adams",
+			"designation": "CEO",
+			"joiningDate": "1985-06-26",
+			"dateOfBirth": "1964-02-28"
+		},
+		"manages": [{
+				"firstName": "Janet",
+				"lastName": "Smith",
+				"designation": "Design Engineer",
+				"joiningDate": "1994-06-06",
+				"dateOfBirth": "1983-02-28"
+			},
+			{
+				"firstName": "Jamie",
+				"lastName": "Black",
+				"designation": "Head of Design",
+				"joiningDate": "1990-06-06",
+				"dateOfBirth": "1974-02-28"
+			}
+		]
+	},
+	"dates": {
+		"createdAt": "1999-12-10",
+		"updatedAt": "1999-12-16",
+		"startDate": "2000-01-02",
+		"endDate": "2000-01-16"
+	}
+}
+    """
+
+    val result = read[Task] { input }
+
+    result shouldBe a[Task]
+
+    result.assignedTo shouldBe an[Employee]
+    result.supervisor shouldBe an[Employee]
+
+    result.manager shouldBe a[Manager]
+    result.manager.identity shouldBe an[Employee]
+    result.manager.reportsTo shouldBe an[Employee]
+
+    result.manager.manages shouldBe a[List[Employee]]
+    result.manager.charecterstics shouldBe a[List[String]]
+
+    result.assignedTo.joiningDate shouldBe a[LocalDate]
+    result.assignedTo.dateOfBirth shouldBe a[LocalDate]
+
+    result should be(expected)
+    result.manager.manages should be(List(assignedTo, supervisor))
+  }
+
   behavior of "write"
 
   it should "accept a Scala object and write to JSON using custom formatter" in {
@@ -81,4 +255,5 @@ class Json4sSpec extends FlatSpec with Matchers {
     val endDate = (parsedResult \ "endDate")
     endDate.values should be("2000-01-16")
   }
+
 }
