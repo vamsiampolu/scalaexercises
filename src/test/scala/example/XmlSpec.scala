@@ -1,7 +1,10 @@
 package example
 
+import collection.JavaConverters._
 import scala.xml._
 import org.scalatest._
+import org.xmlunit.builder._
+import org.xmlunit.diff._
 
 /* Reading List:
   Note: The author of the first blog post has not escaped \ and \\ and thus his source code samples show space instead of \ and \ instead of \\. This can be very confusing.
@@ -14,6 +17,9 @@ import org.scalatest._
  
  // Pattern Matching Lament taken from:
  * http://www.codecommit.com/blog/scala/working-with-scalas-xml-support
+ 
+ // XMLUnit Blog Post:
+ *  http://www.baeldung.com/xmlunit2
 */
 
 
@@ -35,7 +41,19 @@ case class Album(val title: String, val songs: Seq[Song], val description: Strin
   lazy val length = s"${(time / 60)}:${(time % 60)}"
 }
 
+case class Album2(val title: String, val songs: Seq[Song], val description: String, descriptionLink: String) {
+  lazy val time = {
+    songs
+      .map(x => { x.time })
+      .sum
+  }
+  lazy val length = s"${(time / 60)}:${(time % 60)}"
+}
+
 case class Artist(val name: String, val albums: Seq[Album])
+
+case class Artist2(val name: String, val albums: Seq[Album2])
+
 
 class XmlSpec extends FlatSpec with Matchers with BeforeAndAfter with OptionValues {
 
@@ -530,7 +548,21 @@ class XmlSpec extends FlatSpec with Matchers with BeforeAndAfter with OptionValu
     )
   }
 
-  it should "allow converting from Scala to XML" in {
+  behavior of "XMLUnit Testing Library (DiffBuilder)"
+
+  it should "mark two nodes as identical if they are the same" in {
+    val diff:Diff = DiffBuilder
+      .compare(music.toString) // should put expected/received here
+      .withTest(music.toString) // should put actual/ result here
+      .ignoreWhitespace()
+      .checkForIdentical()
+      .build()
+
+      diff.hasDifferences() shouldBe false
+
+  }
+
+  ignore should "provide a Iterator with differences when two XML strings are not the same" in {
 
     val artists = (music \ "artist").map { artist =>
       val name = (artist \ "@name").text
@@ -558,7 +590,189 @@ class XmlSpec extends FlatSpec with Matchers with BeforeAndAfter with OptionValu
       }}
     </music>
 
-    // (music child) should contain atleastOneElementOf (result child)
-    pending
+    val diff:Diff = DiffBuilder
+      .compare(music.toString)
+      .withTest(result.toString)
+      .ignoreWhitespace()
+      .checkForIdentical()
+      .build()
+
+      diff.hasDifferences() shouldBe true
+
+      val it = diff.getDifferences().iterator().asScala
+      for {
+        elem <- it
+      } println(elem)
+  }
+
+  it should "bail on first difference when the comparison controller is provided" in {
+
+    val artists = (music \ "artist").map { artist =>
+      val name = (artist \ "@name").text
+      val albums = (artist \ "album").map { album =>
+        val title = (album \ "@title").text
+        val description = (album \ "description").text
+        val songList = (album \ "song").map { song =>
+          Song((song \ "@title").text, (song \ "@length").text)
+        }
+        Album(title, songList, description)
+      }
+      Artist(name, albums)
+    }
+
+    val result = <music>
+    { artists.map { artist =>
+      <artist name={artist.name}>
+      { artist.albums.map { album =>
+        <album title={album.title}>
+        { album.songs.map(song => <song title={song.title} length={song.length}/>) }
+        <description>{album.description}</description>
+      </album>
+      }}
+    </artist>
+    }}
+  </music>
+
+  val diff:Diff = DiffBuilder
+    .compare(music.toString)
+    .withTest(result.toString)
+    .ignoreWhitespace()
+    .withComparisonController(ComparisonControllers.StopWhenDifferent)
+    .checkForIdentical()
+    .build()
+
+    diff.hasDifferences() shouldBe true
+    val xs = diff.getDifferences().iterator().asScala.toList
+    xs.length should be(1)
+
+    for {
+      elem <- xs
+    } println(elem)
+  }
+
+  it should " have no differences when two XML strings are generated to be the same" in {
+
+    val artists = (music \ "artist").map { artist =>
+      val name = (artist \ "@name").text
+      val albums = (artist \ "album").map { album =>
+        val title = (album \ "@title").text
+        val description = (album \ "description").text
+        val descriptionLink = (album \ "description" \ "@link").text
+        val songList = (album \ "song").map { song =>
+          Song((song \ "@title").text, (song \ "@length").text)
+        }
+        Album2(title, songList, description, descriptionLink)
+      }
+      Artist2(name, albums)
+    }
+
+    val result = <music>
+    { artists.map { artist =>
+      <artist name={artist.name}>
+      { artist.albums.map { album =>
+        <album title={album.title}>
+        { album.songs.map(song => <song title={song.title} length={song.length}/>) }
+        <description link={album.descriptionLink}>{album.description}</description>
+      </album>
+      }}
+    </artist>
+    }}
+  </music>
+
+  val diff:Diff = DiffBuilder
+    .compare(music.toString)
+    .withTest(result.toString)
+    .ignoreWhitespace()
+    .checkForIdentical()
+    .build()
+
+    diff.hasDifferences() shouldBe false
+  }
+
+  it should "use a element name based approach to matching XML" in {
+    val artists = (music \ "artist").map { artist =>
+      val name = (artist \ "@name").text
+      val albums = (artist \ "album").map { album =>
+        val title = (album \ "@title").text
+        val description = (album \ "description").text
+        val descriptionLink = (album \ "description" \ "@link").text
+        val songList = (album \ "song").map { song =>
+          Song((song \ "@title").text, (song \ "@length").text)
+        }
+        Album2(title, songList, description, descriptionLink)
+      }
+      Artist2(name, albums)
+    }
+
+    val result = <music>
+    { artists.map { artist =>
+      <artist name={artist.name}>
+      { artist.albums.map { album =>
+        <album title={album.title}>
+        <description link={album.descriptionLink}>{album.description}</description>
+        { album.songs.map(song => <song title={song.title} length={song.length}/>) }
+      </album>
+      }}
+    </artist>
+    }}
+  </music>
+
+  val diff:Diff = DiffBuilder
+    .compare(music.toString)
+    .withTest(result.toString)
+    .ignoreWhitespace()
+    .withNodeMatcher(new DefaultNodeMatcher(ElementSelectors.byName))
+    .checkForSimilar()
+    .build()
+
+    val it = diff.getDifferences().iterator().asScala
+    for {
+      elem <- it
+    } println(elem)
+
+    diff.hasDifferences() shouldBe false
+  }
+
+  it should "ignore blatant issues such as a missing attribute with a custom Difference Evaluator" in {
+    val artists = (music \ "artist").map { artist =>
+      val name = (artist \ "@name").text
+      val albums = (artist \ "album").map { album =>
+        val title = (album \ "@title").text
+        val description = (album \ "description").text
+        val songList = (album \ "song").map { song =>
+          Song((song \ "@title").text, (song \ "@length").text)
+        }
+        Album(title, songList, description)
+      }
+      Artist(name, albums)
+    }
+
+    val result = <music>
+    { artists.map { artist =>
+      <artist name={artist.name}>
+      { artist.albums.map { album =>
+        <album title={album.title}>
+        { album.songs.map(song => <song title={song.title} length={song.length}/>) }
+        <description link="nope">{album.description}</description>
+      </album>
+      }}
+    </artist>
+    }}
+  </music>
+
+    val myDiff:Diff = DiffBuilder
+      .compare(music.toString)
+      .withTest(result.toString)
+      .withNodeMatcher(new DefaultNodeMatcher(ElementSelectors.byName))
+      .withDifferenceEvaluator(new IgnoreAttributeDifferenceEvaluator("link"))
+      .checkForSimilar().build()
+
+
+      val it = myDiff.getDifferences().iterator().asScala
+      for {
+        elem <- it
+      } println(elem)
+
+      myDiff.hasDifferences() shouldBe false 
   }
 }

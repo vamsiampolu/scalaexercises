@@ -24,4 +24,6 @@ object Dependencies {
   lazy val scalaXml = "org.scala-lang" % "scala-xml" % "2.11.0-M4"
 
   lazy val nscalatime = "com.github.nscala-time" %% "nscala-time" % "2.18.0"
+
+  lazy val xmlunit = "org.xmlunit" % "xmlunit-core" % "2.5.1"
 }

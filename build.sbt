@@ -15,5 +15,6 @@ lazy val root = (project in file(".")).
     libraryDependencies += scalaTest % Test,
     libraryDependencies += scalaXml,
     libraryDependencies += nscalatime,
-    libraryDependencies ++= json4s
+    libraryDependencies ++= json4s,
+    libraryDependencies += xmlunit
   )
