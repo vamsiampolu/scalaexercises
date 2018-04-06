@@ -821,4 +821,39 @@ class XmlSpec extends FlatSpec with Matchers with BeforeAndAfter with OptionValu
       result.isValid() shouldBe true
 
   }
+
+  behavior of "scala-xml-diff"
+
+  it should "compare two xml nodes and check that they are the same" in {
+    import org.scalatest.xml.XmlMatchers._
+    val ignoreWhitespaces = true
+    val artists = (music \ "artist").map { artist =>
+      val name = (artist \ "@name").text
+      val albums = (artist \ "album").map { album =>
+        val title = (album \ "@title").text
+        val description = (album \ "description").text
+        val descriptionLink = (album \ "description" \ "@link").text
+        val songList = (album \ "song").map { song =>
+          Song((song \ "@title").text, (song \ "@length").text)
+        }
+        Album2(title, songList, description, descriptionLink)
+      }
+      Artist2(name, albums)
+    }
+
+    val result = <music>
+    { artists.map { artist =>
+      <artist name={artist.name}>
+      { artist.albums.map { album =>
+        <album title={album.title}>
+        { album.songs.map(song => <song title={song.title} length={song.length}/>) }
+        <description link={album.descriptionLink}>{album.description}</description>
+      </album>
+      }}
+    </artist>
+    }}
+  </music>
+
+    result should beXml (music, ignoreWhitespaces)
+  }
 }

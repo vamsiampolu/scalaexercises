@@ -26,4 +26,8 @@ object Dependencies {
   lazy val nscalatime = "com.github.nscala-time" %% "nscala-time" % "2.18.0"
 
   lazy val xmlunit = "org.xmlunit" % "xmlunit-core" % "2.5.1"
+
+  lazy val scala_xml_diff =  "com.github.andyglow" %% "scala-xml-diff" % "2.0.3"
+  // https://mvnrepository.com/artifact/com.github.andyglow/scala-xml-diff
+
 }
