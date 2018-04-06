@@ -5,19 +5,20 @@ import scala.xml._
 import org.scalatest._
 import org.xmlunit.builder._
 import org.xmlunit.diff._
+import org.xmlunit.validation._
 
 /* Reading List:
   Note: The author of the first blog post has not escaped \ and \\ and thus his source code samples show space instead of \ and \ instead of \\. This can be very confusing.
- 
+
  * http://bcomposes.com/2012/05/04/basic-xml-processing-with-scala/
- 
+
  * https://alvinalexander.com/scala/xml-parsing-xpath-extract-xml-tag-attributes
- 
+
  * https://alvinalexander.com/scala/how-to-extract-data-from-xml-nodes-in-scala
- 
+
  // Pattern Matching Lament taken from:
  * http://www.codecommit.com/blog/scala/working-with-scalas-xml-support
- 
+
  // XMLUnit Blog Post:
  *  http://www.baeldung.com/xmlunit2
 */
@@ -748,24 +749,25 @@ class XmlSpec extends FlatSpec with Matchers with BeforeAndAfter with OptionValu
     }
 
     val result = <music>
-    { artists.map { artist =>
-      <artist name={artist.name}>
-      { artist.albums.map { album =>
-        <album title={album.title}>
-        { album.songs.map(song => <song title={song.title} length={song.length}/>) }
-        <description link="nope">{album.description}</description>
-      </album>
+      { artists.map { artist =>
+        <artist name={artist.name}>
+        { artist.albums.map { album =>
+          <album title={album.title}>
+          { album.songs.map(song => <song title={song.title} length={song.length}/>) }
+          <description link="No value">{album.description}</description>
+        </album>
+        }}
+      </artist>
       }}
-    </artist>
-    }}
-  </music>
+    </music>
 
     val myDiff:Diff = DiffBuilder
       .compare(music.toString)
       .withTest(result.toString)
-      .withNodeMatcher(new DefaultNodeMatcher(ElementSelectors.byName))
+      .ignoreWhitespace()
       .withDifferenceEvaluator(new IgnoreAttributeDifferenceEvaluator("link"))
-      .checkForSimilar().build()
+      .checkForSimilar()
+      .build()
 
 
       val it = myDiff.getDifferences().iterator().asScala
@@ -773,6 +775,50 @@ class XmlSpec extends FlatSpec with Matchers with BeforeAndAfter with OptionValu
         elem <- it
       } println(elem)
 
-      myDiff.hasDifferences() shouldBe false 
+      myDiff.hasDifferences() shouldBe false
+  }
+
+  behavior of "XMLUnit (Validator)"
+
+  it should "validate XML against a schema definition" in {
+    val schemaNode = <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name='class'>
+      <xs:complexType>
+        <xs:sequence>
+          <xs:element name='student' type='StudentObject'
+          minOccurs='0' maxOccurs='unbounded' />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:element>
+    <xs:complexType name="StudentObject">
+      <xs:sequence>
+        <xs:element name="name" type="xs:string" />
+        <xs:element name="age" type="xs:positiveInteger" />
+      </xs:sequence>
+      <xs:attribute name='id' type='xs:positiveInteger' />
+    </xs:complexType>
+  </xs:schema>
+
+    val actual = <class>
+        <student id="393">
+          <name>Rajiv</name>
+          <age>18</age>
+        </student>
+        <student id="493">
+          <name>Candie</name>
+          <age>19</age>
+        </student>
+      </class>
+
+      val schemaSource:javax.xml.transform.Source = org.xmlunit.builder.Input.fromString(schemaNode.toString).build()
+      val resultSource:javax.xml.transform.Source = org.xmlunit.builder.Input.fromString(actual.toString).build()
+
+      val v:Validator = Validator.forLanguage(Languages.W3C_XML_SCHEMA_NS_URI)
+      v.setSchemaSource(schemaSource)
+
+      val result:ValidationResult = v.validateInstance(resultSource)
+
+      result.isValid() shouldBe true
+
   }
 }
