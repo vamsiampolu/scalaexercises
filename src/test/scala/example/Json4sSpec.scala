@@ -10,6 +10,8 @@ import org.json4s.native.JsonMethods._
 import org.json4s.native.Serialization.{read, write}
 import org.json4s.JsonAST.{JString, JNull}
 
+import com.stephenn.scalatest.json4s.JsonMatchers
+
 object LocalDateSerializer extends CustomSerializer[LocalDate](format => ({
   case JString(str) => LocalDate.parse(str)
   case JNull => null
@@ -49,7 +51,7 @@ case class Task(
 )
 
 
-class Json4sSpec extends FlatSpec with Matchers {
+class Json4sSpec extends FlatSpec with Matchers with JsonMatchers {
   behavior of "read"
 
   it should "read Java 8 Local Date Time from JSON String with CustomSerializer" in {
@@ -118,7 +120,7 @@ class Json4sSpec extends FlatSpec with Matchers {
     )
 
     val manager = Manager(
-      managerPerson, 
+      managerPerson,
       "Design",
       List(
         "Old Fashioned",
@@ -254,6 +256,25 @@ class Json4sSpec extends FlatSpec with Matchers {
 
     val endDate = (parsedResult \ "endDate")
     endDate.values should be("2000-01-16")
+  }
+
+  behavior of "scalatest_json matchers for json4s"
+
+  it should "match two json strings" in {
+    val expected = """
+      |{
+      |  "with": ["json", "content"],
+      |  "some": "valid json"
+      |}
+    """.stripMargin
+
+    val actual = """
+    |{
+      |  "with": ["json", "content"], "some": "valid json"
+    |}
+    """.stripMargin
+
+    actual should matchJson(expected)
   }
 
 }

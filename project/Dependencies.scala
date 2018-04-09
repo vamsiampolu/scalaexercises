@@ -28,6 +28,6 @@ object Dependencies {
   lazy val xmlunit = "org.xmlunit" % "xmlunit-core" % "2.5.1"
 
   lazy val scala_xml_diff =  "com.github.andyglow" %% "scala-xml-diff" % "2.0.3"
-  // https://mvnrepository.com/artifact/com.github.andyglow/scala-xml-diff
 
+  lazy val scalatest_json = "com.stephenn" %% "scalatest-json4s" % "0.0.2"
 }

@@ -825,7 +825,10 @@ class XmlSpec extends FlatSpec with Matchers with BeforeAndAfter with OptionValu
   behavior of "scala-xml-diff"
 
   it should "compare two xml nodes and check that they are the same" in {
-    import org.scalatest.xml.XmlMatchers._
+    import com.github.andyglow.xml.diff._
+    import com.github.andyglow.xml.diff.XmlDiff._
+    // import org.scalatest.xml.XmlMatchers._
+
     val ignoreWhitespaces = true
     val artists = (music \ "artist").map { artist =>
       val name = (artist \ "@name").text
@@ -841,6 +844,12 @@ class XmlSpec extends FlatSpec with Matchers with BeforeAndAfter with OptionValu
       Artist2(name, albums)
     }
 
+    for 
+    {
+      albums <- artists.map(artist => artist.albums)
+      desc <- albums.map(x => x.description)
+    } yield println(desc)
+
     val result = <music>
     { artists.map { artist =>
       <artist name={artist.name}>
@@ -854,6 +863,6 @@ class XmlSpec extends FlatSpec with Matchers with BeforeAndAfter with OptionValu
     }}
   </music>
 
-    result should beXml (music, ignoreWhitespaces)
+    result =#= music should be(Eq)
   }
 }
