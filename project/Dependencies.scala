@@ -18,6 +18,10 @@ object Dependencies {
     "org.json4s" %% "json4s-native",
     "org.json4s" %% "json4s-ext"
   ).map(_ % json4s_version)
+  
+  lazy val cats = (
+    "org.typelevel" %% "cats-core" % "1.5.0"
+  )
 
   lazy val circe_sttp = "com.softwaremill.sttp" %% "circe" % "1.1.1"
 

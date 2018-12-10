@@ -1,4 +1,5 @@
 import Dependencies._
+import sbt.Keys.libraryDependencies
 
 lazy val root = (project in file(".")).
   settings(
@@ -18,5 +19,12 @@ lazy val root = (project in file(".")).
     libraryDependencies ++= json4s,
     libraryDependencies += xmlunit,
     libraryDependencies += scala_xml_diff % Compile,
-    libraryDependencies += scalatest_json
+    libraryDependencies += scalatest_json,
+    libraryDependencies += cats
   )
+
+resolvers += Resolver.sonatypeRepo("releases")
+
+scalacOptions += "-Ypartial-unification"
+
+addCompilerPlugin("org.spire-math" %% "kind-projector" % "0.9.8")
