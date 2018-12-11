@@ -78,5 +78,4 @@ class SemigroupSpec extends FlatSpec with Matchers {
     none |+| none shouldEqual none
     Option(2) |+| none shouldEqual Option(2)
   }
-
 }
