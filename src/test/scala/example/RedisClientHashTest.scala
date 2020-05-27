@@ -134,4 +134,35 @@ class RedisClientHashSpec extends FlatSpec with Matchers with BeforeAndAfterAll 
 
      redisClient.hlen("color-codes") shouldEqual Some(2L)
   }
+
+  behavior of "RedisClient#hkeys"
+  
+  it should "get the field names of the hash" in {
+     redisClient.hmset("color-codes", Map(
+      "red" -> "#FF0000",
+      "azure" -> "#F0FFFF"  
+    ))
+
+     redisClient.hkeys("color-codes") shouldEqual Some(List("red", "azure"))
+  }
+
+  behavior of "RedisClient#hvals"
+
+  it should "get the values for all fields in a hash" in {
+    redisClient.hmset("shells", Map(
+      "sh" -> "Shell",   
+      "bsh" -> "Bourne Shell",
+      "bash" -> "Bourne Again Shell",
+      "zsh" -> "Z Shell",
+      "fish" -> "Friendly Interactive Shell"
+    )) 
+
+    redisClient.hvals("shells").get should contain allOf (
+      "Shell",
+      "Bourne Shell",
+      "Bourne Again Shell",
+      "Z Shell",
+      "Friendly Interactive Shell"
+    )
+  }
 }
