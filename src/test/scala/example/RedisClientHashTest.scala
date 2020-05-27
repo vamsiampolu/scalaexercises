@@ -92,4 +92,16 @@ class RedisClientHashSpec extends FlatSpec with Matchers with BeforeAndAfterAll 
 
      redisClient.hexists("color-codes", "magenta") shouldBe false
   }
+
+  behavior of "RedisClient#hincrby"
+
+  it should "increment a field on a hash" in {
+     redisClient.hmset("numbers", Map(
+       "one" -> 1,
+       "two" -> 1
+     )) 
+  
+     redisClient.hincrby("numbers", "two", 1)
+     redisClient.hget("numbers", "two") shouldEqual Some("2")
+  }
 }
