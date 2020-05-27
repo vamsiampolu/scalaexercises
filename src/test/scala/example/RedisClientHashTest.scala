@@ -120,7 +120,18 @@ class RedisClientHashSpec extends FlatSpec with Matchers with BeforeAndAfterAll 
      redisClient.hdel("color-codes", "red") shouldEqual Some(1L)
      redisClient.hexists("color-codes", "red") shouldBe false
 
+     // if a field does not exist on a key, it is not deleted
      redisClient.hdel("color-codes", "magenta") shouldEqual Some(0)
   }
 
+  behavior of "RedisClient#hlen"
+
+  it should "return the number of fields in the hash" in {
+     redisClient.hmset("color-codes", Map(
+      "red" -> "#FF0000",
+      "azure" -> "#F0FFFF"  
+    ))
+
+     redisClient.hlen("color-codes") shouldEqual Some(2L)
+  }
 }
