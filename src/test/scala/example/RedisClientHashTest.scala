@@ -54,4 +54,22 @@ class RedisClientHashSpec extends FlatSpec with Matchers with BeforeAndAfterAll 
     redisClient.hmset("color-codes", expected) shouldEqual true
     redisClient.hmget("color-codes", "red", "azure") shouldEqual Some(expected)
   }
+
+  behavior of "RedisClient#hsetnx"
+
+  it should "add a key-value pair to a Redis key" in {
+    redisClient.hmset("foo", Map(
+      "a" -> "A",
+      "b" -> "B"
+    )) 
+
+    redisClient.hsetnx("foo", "c", "C")
+    redisClient.hsetnx("foo", "a", "Z") shouldEqual false
+
+    redisClient.hmget("foo", "a", "b", "c") shouldEqual Some(Map(
+      "a" -> "A",   
+      "b" -> "B",
+      "c" -> "C"
+    ))
+  }
 }
