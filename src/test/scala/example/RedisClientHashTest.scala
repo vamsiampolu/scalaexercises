@@ -104,4 +104,18 @@ class RedisClientHashSpec extends FlatSpec with Matchers with BeforeAndAfterAll 
      redisClient.hincrby("numbers", "two", 1)
      redisClient.hget("numbers", "two") shouldEqual Some("2")
   }
+
+
+  behavior of "RedisClient#hdel"
+
+  it should "delete a single field from a hash" in {
+     redisClient.hmset("color-codes", Map(
+      "red" -> "#FF0000",
+      "azure" -> "#F0FFFF"  
+    ))
+
+     redisClient.hdel("color-codes", "red") shouldEqual Some(1L)
+     redisClient.hexists("color-codes", "red") shouldBe false
+  }
+
 }
