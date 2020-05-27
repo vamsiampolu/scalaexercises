@@ -94,6 +94,6 @@ class RedisClientListSpec extends FlatSpec with Matchers with BeforeAndAfterAll 
   it should "remove all but first n elements of a List" in {
     redisClient.rpush("goo", 1,2,3,4,5,6,7,8); 
     redisClient.ltrim("goo", 0, 3) 
-    redisClient.lrange("goo", 0, -1) shouldEqual Some(List(Some("1"), Some("2"), Some("3"), Some("4"))
+    redisClient.lrange("goo", 0, -1) shouldEqual Some(List(Some("1"), Some("2"), Some("3"), Some("4")))
   }
 } 
