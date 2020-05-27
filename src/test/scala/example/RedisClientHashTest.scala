@@ -63,7 +63,7 @@ class RedisClientHashSpec extends FlatSpec with Matchers with BeforeAndAfterAll 
       "b" -> "B"
     )) 
 
-    redisClient.hsetnx("foo", "c", "C")
+    redisClient.hsetnx("foo", "c", "C") shouldEqual true
     redisClient.hsetnx("foo", "a", "Z") shouldEqual false
 
     redisClient.hmget("foo", "a", "b", "c") shouldEqual Some(Map(
@@ -71,5 +71,25 @@ class RedisClientHashSpec extends FlatSpec with Matchers with BeforeAndAfterAll 
       "b" -> "B",
       "c" -> "C"
     ))
+  }
+
+  behavior of "RedisClient#hexists"
+
+  it should "return true if a field exists on a hash" in {
+     redisClient.hmset("color-codes", Map(
+      "red" -> "#FF0000",
+      "azure" -> "#F0FFFF"  
+    ))
+
+     redisClient.hexists("color-codes", "azure") shouldBe true
+  }
+
+  it should "return false if a field does not exist on a hash" in {
+     redisClient.hmset("color-codes", Map(
+      "red" -> "#FF0000",
+      "azure" -> "#F0FFFF"  
+    ))
+
+     redisClient.hexists("color-codes", "magenta") shouldBe false
   }
 }
