@@ -34,4 +34,6 @@ object Dependencies {
   lazy val scala_xml_diff =  "com.github.andyglow" %% "scala-xml-diff" % "2.0.3"
 
   lazy val scalatest_json = "com.stephenn" %% "scalatest-json4s" % "0.0.2"
+
+  lazy val scalaredis =  "net.debasishg" %% "redisclient" % "3.30"
 }

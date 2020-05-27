@@ -20,7 +20,8 @@ lazy val root = (project in file(".")).
     libraryDependencies += xmlunit,
     libraryDependencies += scala_xml_diff % Compile,
     libraryDependencies += scalatest_json,
-    libraryDependencies += cats
+    libraryDependencies += cats,
+    libraryDependencies += scalaredis
   )
 
 resolvers += Resolver.sonatypeRepo("releases")
